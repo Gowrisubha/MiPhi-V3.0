@@ -4919,6 +4919,7 @@ has context menu
 @media (max-width:680px) {
    .dl-blurbs dt{
     font-size: 5vw;
+    font-family: "Poppins", Georgia, serif ;
    }
 }
 
