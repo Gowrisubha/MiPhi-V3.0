@@ -256,8 +256,8 @@
               <div class="col-lg-6 mb-5">
                   <h1 class="display-4 fw-bold " data-aos="fade-up" data-aos-delay="200">Enterprise SSD</h1>
                   <p class="lead my-4 " data-aos="fade-up" data-aos-delay="400">Unleash peak performance and endurance for your mission-critical applications.</p>
-                  <a href="contact.html#send-msg" class="btn btn-lg btn-primary rounded-pill text-uppercase mb-3" data-aos="fade-up" data-aos-delay="600">Talk to Sales</a>
-                  <a href="enterprise_table.html" class="btn btn-lg btn-secondary rounded-pill text-uppercase mb-3" data-aos="fade-up" data-aos-delay="600">Explore now</a>
+                  <a href="contact.html#send-msg" class="btn btn-lg btn-primary rounded-pill text-uppercase mb-3" data-aos="fade-up" data-aos-delay="600">Inquire</a>
+                  <!-- <a href="enterprise_table.html" class="btn btn-lg btn-secondary rounded-pill text-uppercase mb-3" data-aos="fade-up" data-aos-delay="600">Explore now</a> -->
               </div>          
               <div class="col-lg-6"><br><br>
                 <!-- Container for image overlay -->
@@ -332,6 +332,7 @@
       </div>
     </div>
   </section>
+  
     <section id="why" class="scrollspy-section " data-aos="fade-right">
       <div class="container-fluid mt-5" >
         <div class="row g-0" >
@@ -457,7 +458,79 @@
           </div>
       </div>
     </section>
-   
+   <br><br>
+    <main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up" >
+           
+       
+       
+       
+      <section class="table__body">
+          <table id = "dataTable">
+              <thead>
+                  <tr>
+                     
+                      <th> Model Number </th>
+                      <th> Interface </th>
+                      <th> Form Factor</th>
+                      <th> Capacity </th>
+                      <th>Sequential  R/W Performance (up to) </th>
+                      <th>Random  R/W Performance (up to) </th>
+                      <th>DWPD </th>
+                      <th> Download PDF</th>
+                      <!-- <th>Download PDF</th> -->
+
+                  </tr>
+              </thead>
+
+              <script>
+                 const arr = [
+  ["MP-SA50V", "SATA III", "2.5", "1930 GB  - 15360 GB", "530/500  MB/s", "97K/20K  IOPS", "0.5", "https://micromaxinfo-my.sharepoint.com/:b:/g/personal/archana_mylsamy_miphi_in/Ed_cZGSRiUxNvnY84xrh1QABlnjFL0gmlIWezkB8NsQytg?e=AQpBIZ"],
+  ["MP-SA50P", "SATA III", "2.5", "480 GB  - 7680 GB", "530/500  MB/sC", "98K/85K  IOPS", "1","https://micromaxinfo-my.sharepoint.com/:b:/g/personal/archana_mylsamy_miphi_in/Ed_cZGSRiUxNvnY84xrh1QABlnjFL0gmlIWezkB8NsQytg?e=AQpBIZ"],
+  ["MP-SA50E", "SATA III", "2.5", "3512 GB  - 7680 GB", "530/500  MB/s", "98K/85K  IOPS", "3","https://micromaxinfo-my.sharepoint.com/:b:/g/personal/archana_mylsamy_miphi_in/Ed_cZGSRiUxNvnY84xrh1QABlnjFL0gmlIWezkB8NsQytg?e=AQpBIZ"],
+  ["MP-BA50P", "SATA III", "M.2 2280", "240 GB  - 960 GB", "530/500  MB/s", "98K/30K  IOPS", "1","https://micromaxinfo-my.sharepoint.com/:b:/g/personal/archana_mylsamy_miphi_in/EVYtDj2ucsZDpML9rbF1HeEBf7kRiJynD1TTVzgpfUDKCA?e=BBD04t"],
+  ["MP-D100P", "SATA III", "M.2 2280/22110", "480 GB  - 3840 GB", "6000/1800  MB/s", "800K/60K  IOPS", "1","https://micromaxinfo-my.sharepoint.com/:b:/g/personal/archana_mylsamy_miphi_in/ETYJ39Jy6HhFuIZpBae7ickBVdctt2Yoq8nfrYKNPp0i3A?e=uVTrlT"],
+  ["MP-X100P", "SATA III", "U.2 | U.3", "1920 GB  - 30720 GB", "7000/6800  MB/s", "1600K/180K  IOPS", "1","https://micromaxinfo-my.sharepoint.com/:b:/g/personal/archana_mylsamy_miphi_in/EcW_zpyulidIhuWUju3odx0BsFepv_DoW11eSRgSRQJqbw?e=o3ikOU"],
+  ["MP-X100E", "SATA III", "U.2 | U.3", "1600 GB  - 25600 GB", "7000/6800  MB/s", "1600K/450K  IOPS", "3","https://micromaxinfo-my.sharepoint.com/:b:/g/personal/archana_mylsamy_miphi_in/EcW_zpyulidIhuWUju3odx0BsFepv_DoW11eSRgSRQJqbw?e=o3ikOU"],
+ 
+];
+
+
+const table = document.getElementById('dataTable');
+
+arr.forEach(item => {
+  const tr = document.createElement('tr');
+
+  tr.innerHTML = `
+      <td data-model="${item[0]}" data-controller="PS5012-E12" data-interface="PCIe 3.0" data-formfactor="M.2 Series">
+          <p href="${item[9]}" id="model-closed">${item[0]}</p>
+      </td>
+      <td>${item[1]}</td>
+     
+      <td>${item[2]}</td>
+       <td>${item[3]}</td>
+        <td>${item[4]}</td>
+         <td>${item[5]}</td>
+      <td>${item[6]}</td>
+     <td class="download-icon">
+                            <a href="${item[7]}" title="Download PDF">
+                              <i class="fas fa-file-download"></i>
+                            </a>
+         </td>
+      
+     
+  `;
+
+  table.appendChild(tr);
+});
+              </script>
+             
+                 
+                 
+             
+          </table>
+      </section>
+
+     </main>
    
    
      
