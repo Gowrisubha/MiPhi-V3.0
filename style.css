@@ -1905,6 +1905,8 @@ tbody td:first-child {
     transition-duration: 1.2s;
   }
 }
+
+
 .featured-number12 {
   flex-shrink: 0;
   width: 50px; /* Adjust size as needed */
@@ -4946,7 +4948,7 @@ dt {
  
 dt::before {
   content: counter(count, decimal-leading-zero)".";
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Poppins';
   color: #ffba18;
   margin-left: -1vw;
   padding-right: 12px;
@@ -6078,7 +6080,7 @@ justify-content: center;
   }
 
   .info-card {
-      max-width: 90%; /* Full width on smaller screens */
+      width: 100%; /* Full width on smaller screens */
   }
 }
 .scrollspy-section {
