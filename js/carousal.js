@@ -82,18 +82,21 @@ const carousal = {
 const carousalDom = document.querySelector('.music-carousal');
 const banners = [
  
-  {
-    imageUrl: "./images/cara7.png"
-  },
-  {
-    imageUrl: "./images/MP100.png"
-  },
-  {
-    imageUrl: "./images/cara8.png"
-  },
-  {
-    imageUrl: "./images/cara7.png"
-  }
+ 
+
+{
+  imageUrl: "./images/MP300G3(2).png"
+},
+{
+  imageUrl: "./images/MP100.png"
+},
+{
+  imageUrl: "./images/MP500G4(2).png"
+},
+{
+  imageUrl: "./images/MP1300G5(2).png"
+}
+
  
   
  
