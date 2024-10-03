@@ -4948,7 +4948,7 @@ dt {
  
 dt::before {
   content: counter(count, decimal-leading-zero)".";
-  font-family: 'Poppins';
+  /* font-family: 'Poppins'; */
   color: #ffba18;
   margin-left: -1vw;
   padding-right: 12px;
