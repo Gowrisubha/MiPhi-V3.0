@@ -6017,6 +6017,7 @@ justify-content: center;
   right: 0; /* Align to the right */
   bottom: 0; /* Align to the bottom */
   display: flex;
+  
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.5); /* Optional: add a semi-transparent background for readability */
