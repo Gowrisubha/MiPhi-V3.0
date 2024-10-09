@@ -88,18 +88,15 @@ const banners = [
   {
     imageUrl: "./images/Copy of AI100E 2TB.png"
   },
+ 
   {
-    imageUrl: "./images/cara6.png"
-  },
-  
-  {
-    imageUrl: "./images/cara4.png"
+    imageUrl: "./images/AI100E(U.2).png"
   },
   {
     imageUrl: "./images/Copy of AI100E 2TB.png"
   },
   {
-    imageUrl: "./images/cara4.png"
+    imageUrl: "./images/AI100E(U.2).png"
   }
  
  
