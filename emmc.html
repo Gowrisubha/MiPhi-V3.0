@@ -286,91 +286,112 @@
     
       <br>
       <br>
-      <h4 style="margin-left: 2%;" data-aos="fade-up" class="px-3">eMMC 5.1 </h4>
-       <main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up">
-           
-       
-       
-       
-        <section class="table__body">
-            <table id = "dataTable">
-                <thead>
-                    <tr>
-                        
-                        <th> Controller </th>
-                        <th> Interface </th>
-                        <th> Capacity </th>
-                        <th> NAND Flash </th>
-                        <th> Sequential R/W Performance (up to) </th>
-                        <th>Package Type/Size (mm)</th>
-                        <th> Operating  Temperature  </th>
-                        <th> Grade </th>
-                      
- 
-                    </tr>
-                </thead>
- 
-                <script>
-                    const arr = [["PS8232" , "eMMC 5.1"
- 
-,"32GB ~  64GB" ,
-"3D TLC",
-"310/180  MB/s",
-"153  Balls (11.5x13x1.0mm)",
-"- 25°C  ~ 85°C (Tcase) ",
-"N/A","document.pdf","ps8232.html"] , ["PS8231",
-"eMMC 5.1",
-"64GB ~  512GB",
-"3D TLC",
-"320/280  MB/s",
-"153  Balls (11.5x13x1.0mm)",
-"- 25°C  ~ 85°C (Tcase)",
-"N/A","document.pdf","ps8231.html"] ,  ["PS8229", "eMMC 5.1", "32GB ~ 256GB", "3D TLC", "315/240 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A","document.pdf","ps8229.html"],
-    ["PS8228", "eMMC 5.1", "8GB", "2D MLC", "280/105 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A","document.pdf","ps8228.html"],
-    ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "100 Balls (14x18x1.4mm)", "- 40°C ~ 85°C", "AEC Grade 3","document.pdf","ps8225.html"],
-    ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "100 Balls (14x18x1.4mm)", "- 40°C ~ 105°C", "AEC Grade 2","document.pdf","ps8225(1).html"],
-    ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3","document.pdf","ps8225(2).html"],
-    ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3","document.pdf","ps8225(3).html"],
-    ["PS8231", "eMMC 5.1", "32GB ~ 256GB", "3D TLC", "320/215 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3","document.pdf","ps8231(1).html"],
-    ["PS8231", "eMMC 5.1", "32GB ~ 256GB", "3D TLC", "320/215 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 105°C", "AEC Grade 2","document.pdf","ps8231(2).html"],
-    ["PS8229", "eMMC 5.1", "16GB ~ 32GB", "3D TLC", "280/190 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3","document.pdf","ps8229(1).html"],
-    ["PS8229", "eMMC 5.1", "16GB ~ 32GB", "3D TLC", "280/190 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3","document.pdf","ps8229(2).html"]]
- 
-const table = document.getElementById('dataTable');
- 
-arr.forEach(item => {
-    const tr = document.createElement('tr');
-    console.log(item)
- 
-    tr.innerHTML = `
-        <td data-model="${item[0]}" data-controller="PS5012-E12" data-interface="PCIe 3.0" data-formfactor="M.2 Series">
-             <a href="${item[9]}" id="model-closed">${item[0]}</a>
-        </td>
-        <td>${item[1]}</td>
-       
-        <td>${item[2]}</td>
-         <td>${item[3]}</td>
-          <td>${item[4]}</td>
-           <td>${item[5]}</td>
-        <td>${item[6]}</td>
-        
-        <td>${item[7]}</td>
-         
-       
-    `;
- 
-    table.appendChild(tr);
-});
-                </script>
-               
-                   
-                   
-               
-            </table>
-        </section>
-    </main>
-   
-   
+      <h4 style="margin-left: 2%;" data-aos="fade-up" class="px-3">eMMC 5.1</h4>
+<main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up">
+    <section class="table__body">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>Controller</th>
+                    <th>Interface</th>
+                    <th>Capacity</th>
+                    <th>NAND Flash</th>
+                    <th>Sequential R/W Performance (up to)</th>
+                    <th>Package Type/Size (mm)</th>
+                    <th>Operating Temperature</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </section>
+</main>
+
+<style>
+    select {
+        border: 1px solid #e4d9d0fe;  /* Set the border color to #fff5 */
+        border-radius: 4px; /* Optional: add some border radius */
+        padding: 0px; /* Optional: add some padding */
+        background-color: transparent; /* Optional: set background color */
+        color: #000; /* Optional: set text color */
+        /* Remove default dropdown arrow */
+        width: 100%; /* Make the select full width */
+        max-width: 150px; /* Optional: set a max width */
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    }
+    
+    /* Optional: Add a custom arrow for the dropdown */
+    select::-ms-expand {
+        display: none; /* Hides default arrow for IE */
+    }
+
+    /* Responsive styles */
+    @media (max-width: 600px) {
+        select {
+            max-width: 100%; /* Allow full width on smaller screens */
+        }
+    }
+</style>
+
+<script>
+    const arr = [
+        ["PS8232", "eMMC 5.1", "32GB ~ 64GB", "3D TLC", "310/180 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A", "document.pdf", "ps8232.html"],
+        ["PS8231", "eMMC 5.1", "64GB ~ 512GB", "3D TLC", "320/280 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A", "document.pdf", "ps8231.html"],
+        ["PS8229", "eMMC 5.1", "32GB ~ 256GB", "3D TLC", "315/240 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A", "document.pdf", "ps8229.html"],
+        ["PS8228", "eMMC 5.1", "8GB", "2D MLC", "280/105 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A", "document.pdf", "ps8228.html"],
+        ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "100 Balls (14x18x1.4mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "ps8225.html"],
+        ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "100 Balls (14x18x1.4mm)", "- 40°C ~ 105°C", "AEC Grade 2", "document.pdf", "ps8225(1).html"],
+        ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "ps8225(2).html"],
+        ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "ps8225(3).html"],
+        ["PS8231", "eMMC 5.1", "32GB ~ 256GB", "3D TLC", "320/215 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "ps8231(1).html"],
+        ["PS8231", "eMMC 5.1", "32GB ~ 256GB", "3D TLC", "320/215 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 105°C", "AEC Grade 2", "document.pdf", "ps8231(2).html"],
+        ["PS8229", "eMMC 5.1", "16GB ~ 32GB", "3D TLC", "280/190 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "ps8229(1).html"],
+        ["PS8229", "eMMC 5.1", "16GB ~ 32GB", "3D TLC", "280/190 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "ps8229(2).html"]
+    ];
+
+    const tableBody = document.getElementById('tableBody');
+
+    // Group by controller
+    const groupedData = arr.reduce((acc, item) => {
+        const controller = item[0];
+        if (!acc[controller]) {
+            acc[controller] = [];
+        }
+        acc[controller].push(item);
+        return acc;
+    }, {});
+
+    Object.keys(groupedData).forEach(controller => {
+        const items = groupedData[controller];
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${controller}</td>
+            <td>${createSelect(items, 1)}</td>
+            <td>${createSelect(items, 2)}</td>
+            <td>${createSelect(items, 3)}</td>
+            <td>${createSelect(items, 4)}</td>
+            <td>${createSelect(items, 5)}</td>
+            <td>${createSelect(items, 6)}</td>
+            <td>${createSelect(items, 7)}</td>
+        `;
+
+        tableBody.appendChild(tr);
+    });
+
+    function createSelect(items, index) {
+        const uniqueValues = [...new Set(items.map(item => item[index]))];
+
+        if (uniqueValues.length === 1) {
+            return uniqueValues[0]; // Return the single value if no dropdown is needed
+        }
+
+        return `<select>
+            ${uniqueValues.map(value => `<option>${value}</option>`).join('')}
+        </select>`;
+    }
+</script>
+
   
    
       <br><br>
