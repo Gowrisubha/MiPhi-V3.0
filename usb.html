@@ -287,154 +287,103 @@
            
        
        
-       
         <section class="table__body">
-            <table id = "dataTable">
-                <thead>
-                    <tr>
-                       
-                        <th> Controller </th>
-                        <th> Interface </th>
-                        <th> Connector Type </th>
-                        <th> Capacity </th>
-                        
-                        <th> Sequential R/W Performance(up to) </th>
-                      
-                    </tr>
-                </thead>
- 
-                <script>
-                   const arr = [
-                   [
-        "PS5021-E21T",
-        "USB 3.2 Gen 2x2",
-        "Type C",
-        "120GB ~ 2TB",
-        "2000/2000 MB/s",
-        "download.pdf",
-        "PS5021-E21T.html"
-    ],
-    [
-        "PS2251-18",
-        "USB 3.2 Gen 2x2",
-        "Type C",
-        "500GB ~ 4TB",
-        "1600/1500 MB/s",
-         "download.pdf",
-        "PS2251-18.html"
-    ],
-    [
-        "PS5013-E13T",
-        "USB 3.2 Gen 2x2",
-        "Type C",
-        "120GB ~ 2TB",
-        "2000/1900 MB/s",
-         "download.pdf",
-        "PS5013-E13T.html"
-    ],
-    [
-        "PS2251-17",
-        "USB 3.2 Gen 2x1",
-        "Type A, Type C, Type A + Type C",
-        "250GB ~ 2TB",
-        "1000/800 MB/s",
-         "download.pdf",
-        "PS2251-17.html"
-    ],
-    [
-        "PS2251-17",
-        "USB 3.2 Gen 2",
-        "Type C",
-        "250GB ~ 2TB",
-        "1100/1000 MB/s",
-         "download.pdf",
-        "PS2251-17(1).html"
-    ],
-    [
-        "PS3111-S11T",
-        "USB 3.2 Gen 2",
-        "Type C",
-        "120GB ~ 1TB",
-        "520/500 MB/s",
-         "download.pdf",
-        "PS3111-S11T.html"
-    ],
-    [
-        "PS3111-S11T",
-        "USB 3.2 Gen 1",
-        "Micro-B",
-        "120GB ~ 1TB",
-        "400/390 MB/s",
-         "download.pdf",
-        "PS3111-S11T(1).html"
-    ],
-    [
-        "PS2251-13",
-        "USB 3.2 Gen 1",
-        "Type A",
-        "16GB ~ 256GB",
-        "320/260 MB/s",
-         "download.pdf",
-        "PS2251-13.html"
-    ],
-    [
-        "PS2251-19",
-        "USB 3.2 Gen 1",
-        "Type A, Type C, Type A + Micro-B, Type A + Type C",
-        "32GB ~ 512GB",
-        "220/100 MB/s",
-         "download.pdf",
-        "PS2251-19.html"
-    ],
-    [
-        "PS2251-11",
-        "USB 3.1 Gen 1",
-        "Type A",
-        "32GB ~ 512GB",
-        "200/100 MB/s",
-         "download.pdf",
-        "PS2251-11.html"
-    ],
-    [
-        "PS2251-70",
-        "USB 2.0",
-        "Type A, Type A + Micro-B, Type A + Type C",
-        "4GB ~ 256GB",
-        "30/15 MB/s",
-         "download.pdf",
-        "PS2251-70.html"
-    ]
-];
- 
- 
-const table = document.getElementById('dataTable');
- 
-arr.forEach(item => {
-    const tr = document.createElement('tr');
- 
-    tr.innerHTML = `
-        <td data-model="${item[0]}" data-controller="PS5012-E12" data-interface="PCIe 3.0" data-formfactor="M.2 Series">
-            <a href="${item[6]}" id="model-closed">${item[0]}</a>
-        </td>
-        <td>${item[1]}</td>
-       
-        <td>${item[2]}</td>
-         <td>${item[3]}</td>
-          <td>${item[4]}</td>
-           
+          <table id="dataTable">
+              <thead>
+                  <tr>
+                      <th>Controller</th>
+                      <th>Interface</th>
+                      <th>Connector Type</th>
+                      <th>Capacity</th>
+                      <th>Sequential R/W Performance (up to)</th>
+                  </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+          </table>
+      </section>
       
-       
-    `;
- 
-    table.appendChild(tr);
-});
-                </script>
-               
-                   
-                   
-               
-            </table>
-        </section>
+      <style>
+        select {
+            border: 1px solid #e4d9d0fe;  /* Set the border color to #fff5 */
+            border-radius: 4px; /* Optional: add some border radius */
+            padding: 0px; /* Optional: add some padding */
+            background-color: transparent; /* Optional: set background color */
+            color: #000; /* Optional: set text color */
+            /* Remove default dropdown arrow */
+            width: 100%; /* Make the select full width */
+            max-width: 150px; /* Optional: set a max width */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+        
+        /* Optional: Add a custom arrow for the dropdown */
+        select::-ms-expand {
+            display: none; /* Hides default arrow for IE */
+        }
+      
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            select {
+                max-width: 100%; /* Allow full width on smaller screens */
+            }
+        }
+      </style>
+      <script>
+          const arr = [
+              ["PS5021-E21T", "USB 3.2 Gen 2x2", "Type C", "120GB ~ 2TB", "2000/2000 MB/s", "download.pdf", "PS5021-E21T.html"],
+              ["PS2251-18", "USB 3.2 Gen 2x2", "Type C", "500GB ~ 4TB", "1600/1500 MB/s", "download.pdf", "PS2251-18.html"],
+              ["PS5013-E13T", "USB 3.2 Gen 2x2", "Type C", "120GB ~ 2TB", "2000/1900 MB/s", "download.pdf", "PS5013-E13T.html"],
+              ["PS2251-17", "USB 3.2 Gen 2x1", "Type A, Type C, Type A + Type C", "250GB ~ 2TB", "1000/800 MB/s", "download.pdf", "PS2251-17.html"],
+              ["PS2251-17", "USB 3.2 Gen 2", "Type C", "250GB ~ 2TB", "1100/1000 MB/s", "download.pdf", "PS2251-17(1).html"],
+              ["PS3111-S11T", "USB 3.2 Gen 2", "Type C", "120GB ~ 1TB", "520/500 MB/s", "download.pdf", "PS3111-S11T.html"],
+              ["PS3111-S11T", "USB 3.2 Gen 1", "Micro-B", "120GB ~ 1TB", "400/390 MB/s", "download.pdf", "PS3111-S11T(1).html"],
+              ["PS2251-13", "USB 3.2 Gen 1", "Type A", "16GB ~ 256GB", "320/260 MB/s", "download.pdf", "PS2251-13.html"],
+              ["PS2251-19", "USB 3.2 Gen 1", "Type A, Type C, Type A + Micro-B, Type A + Type C", "32GB ~ 512GB", "220/100 MB/s", "download.pdf", "PS2251-19.html"],
+              ["PS2251-11", "USB 3.1 Gen 1", "Type A", "32GB ~ 512GB", "200/100 MB/s", "download.pdf", "PS2251-11.html"],
+              ["PS2251-70", "USB 2.0", "Type A, Type A + Micro-B, Type A + Type C", "4GB ~ 256GB", "30/15 MB/s", "download.pdf", "PS2251-70.html"]
+          ];
+      
+          const tableBody = document.getElementById('tableBody');
+      
+          // Group by Controller
+          const groupedData = arr.reduce((acc, item) => {
+              const controller = item[0];
+              if (!acc[controller]) {
+                  acc[controller] = [];
+              }
+              acc[controller].push(item);
+              return acc;
+          }, {});
+      
+          Object.keys(groupedData).forEach(controller => {
+              const items = groupedData[controller];
+      
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+                  <td data-model="${items[0][0]}" data-controller="${items[0][0]}" data-interface="${items[0][1]}" data-formfactor="M.2 Series">
+                      <a href="${items[0][6]}" id="model-closed">${items[0][0]}</a>
+                  </td>
+                  <td>${createSelect(items, 1)}</td>
+                  <td>${createSelect(items, 2)}</td>
+                  <td>${createSelect(items, 3)}</td>
+                  <td>${createSelect(items, 4)}</td>
+              `;
+      
+              tableBody.appendChild(tr);
+          });
+      
+          function createSelect(items, index) {
+              const uniqueValues = [...new Set(items.map(item => item[index]))];
+      
+              if (uniqueValues.length === 1) {
+                  return uniqueValues[0]; // Return the single value if no dropdown is needed
+              }
+      
+              return `<select>
+                  ${uniqueValues.map(value => `<option>${value}</option>`).join('')}
+              </select>`;
+          }
+      </script>
+      
  
        
     </main>

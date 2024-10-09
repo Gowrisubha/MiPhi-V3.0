@@ -283,132 +283,170 @@
       <br>
       <br>
       <main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up">
-         <h4 class="px-3" data-aos="fade-up">UFS 3.1</h2>
-           
-       
-       
-       
+        <h4 class="px-3" data-aos="fade-up">UFS 3.1</h4>
+    
         <section class="table__body">
-            <table id = "dataTable">
+            <table id="dataTable">
                 <thead>
                     <tr>
-                       
-                        <th> Controller </th>
-                        <th> Interface </th>
-                        <th> Capacity </th>
-                        <th> NAND Flash </th>
-                        <th> Sequential R/W Performance (up to) </th>
-                        <th>Package Type/Size(mm)</th>
-                        <th> Operating Temperature </th>
-                        <th> Grade </th>
-                        <th> Voltage</th>
-
-                       
+                        <th>Controller</th>
+                        <th>Interface</th>
+                        <th>Capacity</th>
+                        <th>NAND Flash</th>
+                        <th>Sequential R/W Performance (up to)</th>
+                        <th>Package Type/Size (mm)</th>
+                        <th>Operating Temperature</th>
+                        <th>Grade</th>
+                        <th>Voltage</th>
                     </tr>
                 </thead>
- 
-                <script>
-                   const arr = [
-                   [
-        "PS8317",
-        "HS-G4x2 UFS 3.1",
-        "64GB ~ 512GB",
-        "3D TLC",
-        "1550/1060 MB/s",
-        "153 Ball (11.5x13x1.0/1.2mm)",
-        "-40°C ~ 95°C",
-        "AEC Grade 3",
-        "VCC: 3.3V or 2.5V, VCCQ: 1.2V",
-        "download.pdf",
-        "ps8317.html"
-    ],
-    [
-        "PS8317",
-        "HS-G4x2 UFS 3.1",
-        "64GB ~ 512GB",
-        "3D TLC",
-        "1550/1060 MB/s",
-        "153 Ball (11.5x13x1.0/1.2mm)",
-        "-40°C ~ 105°C",
-        "AEC Grade 2",
-        "VCC: 3.3V or 2.5V, VCCQ: 1.2V",
-        "download.pdf",
-        "ps8317(1).html"
-    ],
-    [
-        "PS8325",
-        "HS-G4x2 UFS 3.1",
-        "256GB ~ 1TB",
-        "3D TLC",
-        "2150/1900 MB/s",
-        "153 Ball (11x13x1.0mm)",
-        "-25°C to 85°C (Tcase)",
-        "N/A",
-        "VCC: 2.5V, VCCQ: 1.2V",
-        "download.pdf",
-        "ps8325.html"
-    ],
-    [
-        "PS8318",
-        "HS-G4x2 UFS 3.1",
-        "128GB ~ 512GB",
-        "3D TLC",
-        "2000/1425 MB/s",
-        "153 Ball (11.5x13x1.0mm)",
-        "-25°C to 85°C (Tcase)",
-        "N/A",
-        "VCC: 2.5V, VCCQ: 1.2V",
-        "download.pdf",
-        "ps8318.html"
-    ],
-    [
-        "PS8317",
-        "HS-G4x2 UFS 3.1",
-        "64GB ~ 128GB",
-        "3D TLC",
-        "1650/1160 MB/s",
-        "153 Ball (11x13x1.0mm)",
-        "-25°C to 85°C (Tcase)",
-        "N/A",
-        "VCC: 2.5V, VCCQ: 1.2V",
-        "download.pdf",
-        "ps8317(2).html"
-    ]
-];
- 
- 
-const table = document.getElementById('dataTable');
- 
-arr.forEach(item => {
-    const tr = document.createElement('tr');
- 
-    tr.innerHTML = `
-        <td data-model="${item[0]}" data-controller="PS5012-E12" data-interface="PCIe 3.0" data-formfactor="M.2 Series">
-            <a href="${item[10]}" id="model-closed">${item[0]}</a>
-        </td>
-        <td>${item[1]}</td>
-       
-        <td>${item[2]}</td>
-         <td>${item[3]}</td>
-          <td>${item[4]}</td>
-           <td>${item[5]}</td>
-        <td>${item[6]}</td>
-         <td>${item[7]}</td>
-         <td>${item[8]}</td>
-        
-       
-    `;
- 
-    table.appendChild(tr);
-});
-                </script>
-               
-                   
-                   
-               
+                <tbody id="tableBody"></tbody>
             </table>
         </section>
- 
+    
+    
+   
+<style>
+  select {
+      border: 1px solid #e4d9d0fe;  /* Set the border color to #fff5 */
+      border-radius: 4px; /* Optional: add some border radius */
+      padding: 0px; /* Optional: add some padding */
+      background-color: transparent; /* Optional: set background color */
+      color: #000; /* Optional: set text color */
+      /* Remove default dropdown arrow */
+      width: 100%; /* Make the select full width */
+      max-width: 150px; /* Optional: set a max width */
+      box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  /* Optional: Add a custom arrow for the dropdown */
+  select::-ms-expand {
+      display: none; /* Hides default arrow for IE */
+  }
+
+  /* Responsive styles */
+  @media (max-width: 600px) {
+      select {
+          max-width: 100%; /* Allow full width on smaller screens */
+      }
+  }
+</style>
+    
+    <script>
+        const arr = [
+            [
+                "PS8317",
+                "HS-G4x2 UFS 3.1",
+                "64GB ~ 512GB",
+                "3D TLC",
+                "1550/1060 MB/s",
+                "153 Ball (11.5x13x1.0/1.2mm)",
+                "-40°C ~ 95°C",
+                "AEC Grade 3",
+                "VCC: 3.3V or 2.5V, VCCQ: 1.2V",
+                "download.pdf",
+                "ps8317.html"
+            ],
+            [
+                "PS8317",
+                "HS-G4x2 UFS 3.1",
+                "64GB ~ 512GB",
+                "3D TLC",
+                "1550/1060 MB/s",
+                "153 Ball (11.5x13x1.0/1.2mm)",
+                "-40°C ~ 105°C",
+                "AEC Grade 2",
+                "VCC: 3.3V or 2.5V, VCCQ: 1.2V",
+                "download.pdf",
+                "ps8317(1).html"
+            ],
+            [
+                "PS8325",
+                "HS-G4x2 UFS 3.1",
+                "256GB ~ 1TB",
+                "3D TLC",
+                "2150/1900 MB/s",
+                "153 Ball (11x13x1.0mm)",
+                "-25°C to 85°C (Tcase)",
+                "N/A",
+                "VCC: 2.5V, VCCQ: 1.2V",
+                "download.pdf",
+                "ps8325.html"
+            ],
+            [
+                "PS8318",
+                "HS-G4x2 UFS 3.1",
+                "128GB ~ 512GB",
+                "3D TLC",
+                "2000/1425 MB/s",
+                "153 Ball (11.5x13x1.0mm)",
+                "-25°C to 85°C (Tcase)",
+                "N/A",
+                "VCC: 2.5V, VCCQ: 1.2V",
+                "download.pdf",
+                "ps8318.html"
+            ],
+            [
+                "PS8317",
+                "HS-G4x2 UFS 3.1",
+                "64GB ~ 128GB",
+                "3D TLC",
+                "1650/1160 MB/s",
+                "153 Ball (11x13x1.0mm)",
+                "-25°C to 85°C (Tcase)",
+                "N/A",
+                "VCC: 2.5V, VCCQ: 1.2V",
+                "download.pdf",
+                "ps8317(2).html"
+            ]
+        ];
+    
+        const tableBody = document.getElementById('tableBody');
+    
+        // Group by controller
+        const groupedData = arr.reduce((acc, item) => {
+            const controller = item[0];
+            if (!acc[controller]) {
+                acc[controller] = [];
+            }
+            acc[controller].push(item);
+            return acc;
+        }, {});
+    
+        Object.keys(groupedData).forEach(controller => {
+            const items = groupedData[controller];
+    
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td data-model="${items[0][0]}" data-controller="${items[0][0]}" data-interface="${items[0][1]}" data-formfactor="M.2 Series">
+                    <a href="${items[0][10]}" id="model-closed">${items[0][0]}</a>
+                </td>
+                <td>${createSelect(items, 1)}</td>
+                <td>${createSelect(items, 2)}</td>
+                <td>${createSelect(items, 3)}</td>
+                <td>${createSelect(items, 4)}</td>
+                <td>${createSelect(items, 5)}</td>
+                <td>${createSelect(items, 6)}</td>
+                <td>${createSelect(items, 7)}</td>
+                <td>${createSelect(items, 8)}</td>
+            `;
+    
+            tableBody.appendChild(tr);
+        });
+    
+        function createSelect(items, index) {
+            const uniqueValues = [...new Set(items.map(item => item[index]))];
+    
+            if (uniqueValues.length === 1) {
+                return uniqueValues[0]; // Return the single value if no dropdown is needed
+            }
+    
+            return `<select>
+                ${uniqueValues.map(value => `<option>${value}</option>`).join('')}
+            </select>`;
+        }
+    </script>
+    
         <h4 class="px-3"> UFS 2.2 </h2>
  
  
@@ -484,108 +522,144 @@ arr2.forEach(item => {
             </table>
         </section>
         
-        <h4 class="px-3"> UFS 2.1 </h2>
-        <section class="table__body">
-            <table id = "dataTable3">
-                <thead>
-                    <tr>
-                       
-                        <th> Controller </th>
-                        <th> Interface </th>
-                        <th> Capacity </th>
-                        <th> NAND Flash </th>
-                        <th> Sequential R/W Performance (up to) </th>
-                        <th>Package Type/Size(mm)</th>
-                        <th> Operating Temperature </th>
-                        <th> Grade </th>
-                        <th> Voltage</th>
-
-                       
-                    </tr>
-                </thead>
- 
-                <script>
-                   const arr3 = [
-                   [
-        "PS8317",
-        "HS-G3x2 UFS 2.1",
-        "64GB ~ 256GB",
-        "3D TLC",
-        "1000/900 MB/s",
-        "153 Ball (11.5x13x1.0/1.2mm)",
-        "-40°C ~ 95°C",
-        "N/A",
-        "VCC: 3.3V, VCCQ2: 1.8V",
-        "download.pdf",
-        "ps8317(4).html"
-    ],
-    [
-        "PS8317",
-        "HS-G3x2 UFS 2.1",
-        "64GB ~ 256GB",
-        "3D TLC",
-        "1000/900 MB/s",
-        "153 Ball (11.5x13x1.0/1.2mm)",
-        "-40°C ~ 95°C",
-        "AEC Grade 3",
-        "VCC: 3.3V, VCCQ2: 1.8V",
-        "download.pdf",
-        "ps8317(5).html"
-    ],
-    [
-        "PS8317",
-        "HS-G3x2 UFS 2.1",
-        "64GB ~ 256GB",
-        "3D TLC",
-        "1000/900 MB/s",
-        "153 Ball (11.5x13x1.0/1.2mm)",
-        "-40°C ~ 105°C",
-        "AEC Grade 2",
-        "VCC: 3.3V, VCCQ2: 1.8V",
-        "download.pdf",
-        "ps8317(6).html"
-    ],
-
-];
- 
- 
- 
-const table3 = document.getElementById('dataTable3');
-
-
- 
-arr3.forEach(item => {
-  
-    const tr = document.createElement('tr');
- 
-    tr.innerHTML = `
-        <td data-model="${item[0]}" data-controller="PS5012-E12" data-interface="PCIe 3.0" data-formfactor="M.2 Series">
-            <a href="${item[10]}" id="model-closed">${item[0]}</a>
-        </td>
-        <td>${item[1]}</td>
-       
-        <td>${item[2]}</td>
-         <td>${item[3]}</td>
-          <td>${item[4]}</td>
-           <td>${item[5]}</td>
-        <td>${item[6]}</td>
-         <td>${item[7]}</td>
-
-         <td>${item[8]}</td>
+          <h4 class="px-3" data-aos="fade-up">UFS 2.1</h4>
       
-       
-    `;
-    
- 
-    table3.appendChild(tr);
-});
-                </script>
-               
-                   
-                   
-               
-            </table>
-        </section>
+          <section class="table__body">
+              <table id="dataTable2">
+                  <thead>
+                      <tr>
+                          <th>Controller</th>
+                          <th>Interface</th>
+                          <th>Capacity</th>
+                          <th>NAND Flash</th>
+                          <th>Sequential R/W Performance (up to)</th>
+                          <th>Package Type/Size (mm)</th>
+                          <th>Operating Temperature</th>
+                          <th>Grade</th>
+                          <th>Voltage</th>
+                      </tr>
+                  </thead>
+                  <tbody id="tableBody2"></tbody>
+              </table>
+          </section>
+      
+      
+      
+<style>
+  select {
+      border: 1px solid #e4d9d0fe;  /* Set the border color to #fff5 */
+      border-radius: 4px; /* Optional: add some border radius */
+      padding: 0px; /* Optional: add some padding */
+      background-color: transparent; /* Optional: set background color */
+      color: #000; /* Optional: set text color */
+      /* Remove default dropdown arrow */
+      width: 100%; /* Make the select full width */
+      max-width: 150px; /* Optional: set a max width */
+      box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  /* Optional: Add a custom arrow for the dropdown */
+  select::-ms-expand {
+      display: none; /* Hides default arrow for IE */
+  }
+
+  /* Responsive styles */
+  @media (max-width: 600px) {
+      select {
+          max-width: 100%; /* Allow full width on smaller screens */
+      }
+  }
+</style>
+      
+      <script>
+          const arr3 = [
+              [
+                  "PS8317",
+                  "HS-G3x2 UFS 2.1",
+                  "64GB ~ 256GB",
+                  "3D TLC",
+                  "1000/900 MB/s",
+                  "153 Ball (11.5x13x1.0/1.2mm)",
+                  "-40°C ~ 95°C",
+                  "N/A",
+                  "VCC: 3.3V, VCCQ2: 1.8V",
+                  "download.pdf",
+                  "ps8317(4).html"
+              ],
+              [
+                  "PS8317",
+                  "HS-G3x2 UFS 2.1",
+                  "64GB ~ 256GB",
+                  "3D TLC",
+                  "1000/900 MB/s",
+                  "153 Ball (11.5x13x1.0/1.2mm)",
+                  "-40°C ~ 95°C",
+                  "AEC Grade 3",
+                  "VCC: 3.3V, VCCQ2: 1.8V",
+                  "download.pdf",
+                  "ps8317(5).html"
+              ],
+              [
+                  "PS8317",
+                  "HS-G3x2 UFS 2.1",
+                  "64GB ~ 256GB",
+                  "3D TLC",
+                  "1000/900 MB/s",
+                  "153 Ball (11.5x13x1.0/1.2mm)",
+                  "-40°C ~ 105°C",
+                  "AEC Grade 2",
+                  "VCC: 3.3V, VCCQ2: 1.8V",
+                  "download.pdf",
+                  "ps8317(6).html"
+              ],
+          ];
+      
+          const tableBody2 = document.getElementById('tableBody2');
+      
+          // Group by controller
+          const groupedData2 = arr3.reduce((acc, item) => {
+              const controller = item[0];
+              if (!acc[controller]) {
+                  acc[controller] = [];
+              }
+              acc[controller].push(item);
+              return acc;
+          }, {});
+      
+          Object.keys(groupedData2).forEach(controller => {
+              const items = groupedData2[controller];
+      
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+                  <td data-model="${items[0][0]}" data-controller="${items[0][0]}" data-interface="${items[0][1]}" data-formfactor="M.2 Series">
+                      <a href="${items[0][10]}" id="model-closed">${items[0][0]}</a>
+                  </td>
+                  <td>${createSelect(items, 1)}</td>
+                  <td>${createSelect(items, 2)}</td>
+                  <td>${createSelect(items, 3)}</td>
+                  <td>${createSelect(items, 4)}</td>
+                  <td>${createSelect(items, 5)}</td>
+                  <td>${createSelect(items, 6)}</td>
+                  <td>${createSelect(items, 7)}</td>
+                  <td>${createSelect(items, 8)}</td>
+              `;
+      
+              tableBody2.appendChild(tr);
+          });
+      
+          function createSelect(items, index) {
+              const uniqueValues = [...new Set(items.map(item => item[index]))];
+      
+              if (uniqueValues.length === 1) {
+                  return uniqueValues[0]; // Return the single value if no dropdown is needed
+              }
+      
+              return `<select>
+                  ${uniqueValues.map(value => `<option>${value}</option>`).join('')}
+              </select>`;
+          }
+      </script>
+      
     </main>
    
    

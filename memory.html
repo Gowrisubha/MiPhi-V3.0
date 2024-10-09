@@ -287,144 +287,219 @@
          <h4 style="margin-left: 2%;" data-aos="fade-up">SD </h4>
            
        
-       
-       
-        <section class="table__body">
-            <table id = "dataTable">
-                <thead>
-                    <tr>
-                       
-                        <th> Controller </th>
-                        <th> Form Factor </th>
-                        <th> Sequential R/W Performance (up to) </th>
-                        <th> Capacity </th>
-                        <th> NAND Flash </th>
-                        <th>Application  Performance Class  </th>
-                        <th> Video  Speed Class </th>
-                        <th> UHS Speed </th>
-                       
- 
-                    </tr>
-                </thead>
- 
-                <script>
-                   const arr = [
-    ["PS8210", "SD", "20/20 MB/s", "128MB - 2GB", "2D SLC", "N/A", "N/A", "N/A","download.pdf","ps8210.html"],
-    ["PS8210", "SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V30(UHS-I)", "U3","download.pdf","ps8210(1).html"],
-    ["PS8131", "SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V10(UHS-I)", "U1","download.pdf","ps8131.html"],
-    ["PS8210", "SD", "20/20 MB/s", "128MB~2GB", "2D SLC", "N/A", "V30(UHS-I)", "N/A","download.pdf","ps8210(2).html"],
-    ["PS8210", "SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3","download.pdf","ps8210(3).html"],
-    ["PS8131", "SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U1","download.pdf","ps8131(1).html"],
-    ["PS8210", "SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3","download.pdf","ps8210(4).html"],
-    ["PS8131", "SD", "100/45 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U3","download.pdf","ps8131(2).html"],
-    ["PS8132", "SD", "100/90 MB/s", "64GB~512GB", "3D TLC", "A2", "V30(UHS-I)", "U3","download.pdf","ps8132.html"],
-    ["PS8132", "SD", "100/90 MB/s", "16GB~128GB", "3D pSLC", "A2", "V30(UHS-I)", "U3","download.pdf","ps8132(1).html"],
-    ["PS8229", "SD", "170/90 MB/s", "128GB~1TB", "3D QLC", "A2", "V30(UHS-I)", "U3","download.pdf","ps8229(3).html"],
-    ["PS8601", "SD", "280/150 MB/s", "128GB~1TB", "3D TLC", "A1", "V60(UHS-II)", "U3","download.pdf","ps8601.html"],
-    ["PS8601", "SD", "280/250 MB/s", "64GB~512GB", "3D pSLC", "N/A", "V90(UHS-II)", "U3","download.pdf","ps8601(1).html"],
-    ["PS5017", "SD", "870/740 MB/s", "256GB~512GB", "3D QLC", "A1", "V90(UHS-II)", "U3","download.pdf","ps5017.html"]
-];
- 
- 
-const table = document.getElementById('dataTable');
- 
-arr.forEach(item => {
-    const tr = document.createElement('tr');
- 
-    tr.innerHTML = `
-        <td data-model="${item[0]}" data-controller="PS5012-E12" data-interface="PCIe 3.0" data-formfactor="M.2 Series">
-            <a href="${item[9]}" id="model-closed">${item[0]}</a>
-        </td>
-        <td>${item[1]}</td>
-       
-        <td>${item[2]}</td>
-         <td>${item[3]}</td>
-          <td>${item[4]}</td>
-           <td>${item[5]}</td>
-        <td>${item[6]}</td>
-         <td>${item[7]}</td>
-         
-       
-    `;
- 
-    table.appendChild(tr);
-});
-                </script>
-               
-                   
-                   
-               
-            </table>
-        </section>
+         <section class="table__body">
+          <table id="dataTable">
+              <thead>
+                  <tr>
+                      <th>Controller</th>
+                      <th>Form Factor</th>
+                      <th>Sequential R/W Performance (up to)</th>
+                      <th>Capacity</th>
+                      <th>NAND Flash</th>
+                      <th>Application Performance Class</th>
+                      <th>Video Speed Class</th>
+                      <th>UHS Speed</th>
+                  </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+          </table>
+      </section>
+      
+      <style>
+        select {
+            border: 1px solid #e4d9d0fe;  /* Set the border color to #fff5 */
+            border-radius: 4px; /* Optional: add some border radius */
+            padding: 0px; /* Optional: add some padding */
+            background-color: transparent; /* Optional: set background color */
+            color: #000; /* Optional: set text color */
+            /* Remove default dropdown arrow */
+            width: 100%; /* Make the select full width */
+            max-width: 150px; /* Optional: set a max width */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+        
+        /* Optional: Add a custom arrow for the dropdown */
+        select::-ms-expand {
+            display: none; /* Hides default arrow for IE */
+        }
+      
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            select {
+                max-width: 100%; /* Allow full width on smaller screens */
+            }
+        }
+      </style>
+      <script>
+          const arr = [
+              ["PS8210", "SD", "20/20 MB/s", "128MB - 2GB", "2D SLC", "N/A", "N/A", "N/A", "download.pdf", "ps8210.html"],
+              ["PS8210", "SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V30(UHS-I)", "U3", "download.pdf", "ps8210(1).html"],
+              ["PS8131", "SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V10(UHS-I)", "U1", "download.pdf", "ps8131.html"],
+              ["PS8210", "SD", "20/20 MB/s", "128MB~2GB", "2D SLC", "N/A", "V30(UHS-I)", "N/A", "download.pdf", "ps8210(2).html"],
+              ["PS8210", "SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3", "download.pdf", "ps8210(3).html"],
+              ["PS8131", "SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U1", "download.pdf", "ps8131(1).html"],
+              ["PS8210", "SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3", "download.pdf", "ps8210(4).html"],
+              ["PS8131", "SD", "100/45 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U3", "download.pdf", "ps8131(2).html"],
+              ["PS8132", "SD", "100/90 MB/s", "64GB~512GB", "3D TLC", "A2", "V30(UHS-I)", "U3", "download.pdf", "ps8132.html"],
+              ["PS8132", "SD", "100/90 MB/s", "16GB~128GB", "3D pSLC", "A2", "V30(UHS-I)", "U3", "download.pdf", "ps8132(1).html"],
+              ["PS8229", "SD", "170/90 MB/s", "128GB~1TB", "3D QLC", "A2", "V30(UHS-I)", "U3", "download.pdf", "ps8229(3).html"],
+              ["PS8601", "SD", "280/150 MB/s", "128GB~1TB", "3D TLC", "A1", "V60(UHS-II)", "U3", "download.pdf", "ps8601.html"],
+              ["PS8601", "SD", "280/250 MB/s", "64GB~512GB", "3D pSLC", "N/A", "V90(UHS-II)", "U3", "download.pdf", "ps8601(1).html"],
+              ["PS5017", "SD", "870/740 MB/s", "256GB~512GB", "3D QLC", "A1", "V90(UHS-II)", "U3", "download.pdf", "ps5017.html"]
+          ];
+      
+          const tableBody = document.getElementById('tableBody');
+      
+          // Group by Controller
+          const groupedData = arr.reduce((acc, item) => {
+              const controller = item[0];
+              if (!acc[controller]) {
+                  acc[controller] = [];
+              }
+              acc[controller].push(item);
+              return acc;
+          }, {});
+      
+          Object.keys(groupedData).forEach(controller => {
+              const items = groupedData[controller];
+      
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+                  <td data-model="${items[0][0]}" data-controller="${items[0][0]}" data-interface="${items[0][1]}" data-formfactor="M.2 Series">
+                      <a href="${items[0][9]}" id="model-closed">${items[0][0]}</a>
+                  </td>
+                  <td>${createSelect(items, 1)}</td>
+                  <td>${createSelect(items, 2)}</td>
+                  <td>${createSelect(items, 3)}</td>
+                  <td>${createSelect(items, 4)}</td>
+                  <td>${createSelect(items, 5)}</td>
+                  <td>${createSelect(items, 6)}</td>
+                  <td>${createSelect(items, 7)}</td>
+              `;
+      
+              tableBody.appendChild(tr);
+          });
+      
+          function createSelect(items, index) {
+              const uniqueValues = [...new Set(items.map(item => item[index]))];
+      
+              if (uniqueValues.length === 1) {
+                  return uniqueValues[0]; // Return the single value if no dropdown is needed
+              }
+      
+              return `<select>
+                  ${uniqueValues.map(value => `<option>${value}</option>`).join('')}
+              </select>`;
+          }
+      </script>
+      
  
         <h4 style = "margin-left : 2%"> Micro SD </h2>
  
- 
-        <section class="table__body">
-            <table id = "dataTable2">
+          <section class="table__body">
+            <table id="dataTable2">
                 <thead>
                     <tr>
-                       
-                        <th> Controller </th>
-                        <th> Form Factor </th>
-                        <th> Sequential R/W Performance (up to) </th>
-                        <th> Capacity </th>
-                        <th> NAND Flash </th>
-                        <th>Application  Performance Class  </th>
-                        <th> Video  Speed Class </th>
-                        <th> UHS Speed </th>
-                        
- 
+                        <th>Controller</th>
+                        <th>Form Factor</th>
+                        <th>Sequential R/W Performance (up to)</th>
+                        <th>Capacity</th>
+                        <th>NAND Flash</th>
+                        <th>Application Performance Class</th>
+                        <th>Video Speed Class</th>
+                        <th>UHS Speed</th>
                     </tr>
                 </thead>
- 
-                <script>
-                   const arr2 = [
-    ["PS8210", "Micro SD", "20/20 MB/s", "128MB - 2GB", "2D SLC", "N/A", "N/A", "N/A","download.pdf","ps8210(5).html"],
-    ["PS8210", "Micro SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V30(UHS-I)", "U3","download.pdf","ps8210(6).html"],
-    ["PS8131", "Micro SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V10(UHS-I)", "U1","download.pdf","ps8131(3).html"],
-    ["PS8210", "Micro SD", "20/20 MB/s", "128MB~2GB", "2D SLC", "N/A", "V30(UHS-I)", "N/A","download.pdf","ps8210(7).html"],
-    ["PS8210", "Micro SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3","download.pdf","ps8210(8).html"],
-    ["PS8131", "Micro SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U1","download.pdf","ps8131(4).html"],
-    ["PS8210", "Micro SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3","download.pdf","ps8210(9).html"],
-    ["PS8131", "Micro SD", "100/45 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U3","download.pdf","ps8131(5).html"],
-    ["PS8132", "Micro SD", "100/90 MB/s", "64GB~512GB", "3D TLC", "A2", "V30(UHS-I)", "U3","download.pdf","ps8132(2).html"],
-    ["PS8132", "Micro SD", "100/90 MB/s", "16GB~128GB", "3D pSLC", "A2", "V30(UHS-I)", "U3","download.pdf","ps8132(3).html"],
-    ["PS8229", "Micro SD", "170/90 MB/s", "128GB~1TB", "3D QLC", "A2", "V30(UHS-I)", "U3","download.pdf","ps8229(4).html"]
-];
- 
- 
- 
-const table2 = document.getElementById('dataTable2');
- 
-arr2.forEach(item => {
-    const tr = document.createElement('tr');
- 
-    tr.innerHTML = `
-        <td data-model="${item[0]}" data-controller="PS5012-E12" data-interface="PCIe 3.0" data-formfactor="M.2 Series">
-            <a href="${item[9]}" id="model-closed">${item[0]}</a>
-        </td>
-        <td>${item[1]}</td>
-       
-        <td>${item[2]}</td>
-         <td>${item[3]}</td>
-          <td>${item[4]}</td>
-           <td>${item[5]}</td>
-        <td>${item[6]}</td>
-         <td>${item[7]}</td>
-        
-       
-    `;
- 
-    table2.appendChild(tr);
-});
-                </script>
-               
-                   
-                   
-               
+                <tbody id="tableBody2"></tbody>
             </table>
         </section>
+        
+        <style>
+          select {
+              border: 1px solid #e4d9d0fe;  /* Set the border color to #fff5 */
+              border-radius: 4px; /* Optional: add some border radius */
+              padding: 0px; /* Optional: add some padding */
+              background-color: transparent; /* Optional: set background color */
+              color: #000; /* Optional: set text color */
+              /* Remove default dropdown arrow */
+              width: 100%; /* Make the select full width */
+              max-width: 150px; /* Optional: set a max width */
+              box-sizing: border-box; /* Include padding and border in the element's total width and height */
+          }
+          
+          /* Optional: Add a custom arrow for the dropdown */
+          select::-ms-expand {
+              display: none; /* Hides default arrow for IE */
+          }
+        
+          /* Responsive styles */
+          @media (max-width: 600px) {
+              select {
+                  max-width: 100%; /* Allow full width on smaller screens */
+              }
+          }
+        </style>
+        
+        <script>
+            const arr2 = [
+                ["PS8210", "Micro SD", "20/20 MB/s", "128MB - 2GB", "2D SLC", "N/A", "N/A", "N/A", "download.pdf", "ps8210(5).html"],
+                ["PS8210", "Micro SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V30(UHS-I)", "U3", "download.pdf", "ps8210(6).html"],
+                ["PS8131", "Micro SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V10(UHS-I)", "U1", "download.pdf", "ps8131(3).html"],
+                ["PS8210", "Micro SD", "20/20 MB/s", "128MB~2GB", "2D SLC", "N/A", "V30(UHS-I)", "N/A", "download.pdf", "ps8210(7).html"],
+                ["PS8210", "Micro SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3", "download.pdf", "ps8210(8).html"],
+                ["PS8131", "Micro SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U1", "download.pdf", "ps8131(4).html"],
+                ["PS8210", "Micro SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3", "download.pdf", "ps8210(9).html"],
+                ["PS8131", "Micro SD", "100/45 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U3", "download.pdf", "ps8131(5).html"],
+                ["PS8132", "Micro SD", "100/90 MB/s", "64GB~512GB", "3D TLC", "A2", "V30(UHS-I)", "U3", "download.pdf", "ps8132(2).html"],
+                ["PS8132", "Micro SD", "100/90 MB/s", "16GB~128GB", "3D pSLC", "A2", "V30(UHS-I)", "U3", "download.pdf", "ps8132(3).html"],
+                ["PS8229", "Micro SD", "170/90 MB/s", "128GB~1TB", "3D QLC", "A2", "V30(UHS-I)", "U3", "download.pdf", "ps8229(4).html"]
+            ];
+        
+            const tableBody2 = document.getElementById('tableBody2');
+        
+            // Group by Controller
+            const groupedData2 = arr2.reduce((acc, item) => {
+                const controller = item[0];
+                if (!acc[controller]) {
+                    acc[controller] = [];
+                }
+                acc[controller].push(item);
+                return acc;
+            }, {});
+        
+            Object.keys(groupedData2).forEach(controller => {
+                const items = groupedData2[controller];
+        
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td data-model="${items[0][0]}" data-controller="${items[0][0]}" data-interface="${items[0][1]}" data-formfactor="Micro SD">
+                        <a href="${items[0][9]}" id="model-closed">${items[0][0]}</a>
+                    </td>
+                    <td>${createSelect(items, 1)}</td>
+                    <td>${createSelect(items, 2)}</td>
+                    <td>${createSelect(items, 3)}</td>
+                    <td>${createSelect(items, 4)}</td>
+                    <td>${createSelect(items, 5)}</td>
+                    <td>${createSelect(items, 6)}</td>
+                    <td>${createSelect(items, 7)}</td>
+                `;
+        
+                tableBody2.appendChild(tr);
+            });
+        
+            function createSelect(items, index) {
+                const uniqueValues = [...new Set(items.map(item => item[index]))];
+        
+                if (uniqueValues.length === 1) {
+                    return uniqueValues[0]; // Return the single value if no dropdown is needed
+                }
+        
+                return `<select>
+                    ${uniqueValues.map(value => `<option>${value}</option>`).join('')}
+                </select>`;
+            }
+        </script>
+        
     </main>
    
    
