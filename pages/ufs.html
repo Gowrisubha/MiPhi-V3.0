@@ -272,8 +272,8 @@
     
       <br>
       <br>
+      <h4 class="px-3" data-aos="fade-up">UFS 3.1</h4>
       <main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up">
-        <h4 class="px-3" data-aos="fade-up">UFS 3.1</h4>
     
         <section class="table__body">
             <table id="dataTable">
@@ -293,226 +293,415 @@
                 <tbody id="tableBody"></tbody>
             </table>
         </section>
+    </main>
     
+    <!-- Modal structure -->
+    <div id="modelModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close py-2">&times;</span>
+            <div class="modal-body">
+                <div class="modal-text">
+                    <h2 id="modelTitle">UFS</h2>
+                    <p id="modelInfo">Information will appear here...</p>
+                </div>
+                <img id="modelImage" src="" alt="Model Image" class="modal-image">
+            </div>
+        </div>
+    </div>
     
-   
-<style>
-  select {
-      border: 1px solid #e4d9d0fe;  /* Set the border color to #fff5 */
-      border-radius: 4px; /* Optional: add some border radius */
-      padding: 0px; /* Optional: add some padding */
-      background-color: transparent; /* Optional: set background color */
-      color: #000; /* Optional: set text color */
-      /* Remove default dropdown arrow */
-      width: 100%; /* Make the select full width */
-      max-width: 150px; /* Optional: set a max width */
-      box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  }
-  
-  /* Optional: Add a custom arrow for the dropdown */
-  select::-ms-expand {
-      display: none; /* Hides default arrow for IE */
-  }
-
-  /* Responsive styles */
-  @media (max-width: 600px) {
-      select {
-          max-width: 100%; /* Allow full width on smaller screens */
+    <style>
+     /* Modal styling */
+    .modal {
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        display: none;
+    }
+    
+    .modal-content {
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 900px; /* Add max-width for larger screens */
+        position: relative;
+    }
+    @media (max-width:768px) {
+      
+      .modal-content {
+          background-color: white;
+          margin: 30% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+          max-width: 900px; /* Add max-width for larger screens */
+          position: relative;
       }
-  }
-</style>
+    }
+    /* Close button styling */
+    .close {
+        color: #aaa;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 28px;
+        font-weight: bold;
+        z-index: 100;
+    }
     
-    <script>
-        const arr = [
-            [
-                "PS8317",
-                "HS-G4x2 UFS 3.1",
-                "64GB ~ 512GB",
-                "3D TLC",
-                "1550/1060 MB/s",
-                "153 Ball (11.5x13x1.0/1.2mm)",
-                "-40°C ~ 95°C",
-                "AEC Grade 3",
-                "VCC: 3.3V or 2.5V, VCCQ: 1.2V",
-                "download.pdf",
-                "ps8317.html"
-            ],
-            [
-                "PS8317",
-                "HS-G4x2 UFS 3.1",
-                "64GB ~ 512GB",
-                "3D TLC",
-                "1550/1060 MB/s",
-                "153 Ball (11.5x13x1.0/1.2mm)",
-                "-40°C ~ 105°C",
-                "AEC Grade 2",
-                "VCC: 3.3V or 2.5V, VCCQ: 1.2V",
-                "download.pdf",
-                "ps8317(1).html"
-            ],
-            [
-                "PS8325",
-                "HS-G4x2 UFS 3.1",
-                "256GB ~ 1TB",
-                "3D TLC",
-                "2150/1900 MB/s",
-                "153 Ball (11x13x1.0mm)",
-                "-25°C to 85°C (Tcase)",
-                "N/A",
-                "VCC: 2.5V, VCCQ: 1.2V",
-                "download.pdf",
-                "ps8325.html"
-            ],
-            [
-                "PS8318",
-                "HS-G4x2 UFS 3.1",
-                "128GB ~ 512GB",
-                "3D TLC",
-                "2000/1425 MB/s",
-                "153 Ball (11.5x13x1.0mm)",
-                "-25°C to 85°C (Tcase)",
-                "N/A",
-                "VCC: 2.5V, VCCQ: 1.2V",
-                "download.pdf",
-                "ps8318.html"
-            ],
-            [
-                "PS8317",
-                "HS-G4x2 UFS 3.1",
-                "64GB ~ 128GB",
-                "3D TLC",
-                "1650/1160 MB/s",
-                "153 Ball (11x13x1.0mm)",
-                "-25°C to 85°C (Tcase)",
-                "N/A",
-                "VCC: 2.5V, VCCQ: 1.2V",
-                "download.pdf",
-                "ps8317(2).html"
-            ]
-        ];
+    .close:hover {
+        color: black;
+        cursor: pointer;
+    }
     
-        const tableBody = document.getElementById('tableBody');
+    /* Flexbox layout for modal body */
+    .modal-body {
+        display: flex;
+        flex-direction: column; /* Stack items vertically for smaller screens */
+        align-items: center;
+    }
     
-        // Group by controller
-        const groupedData = arr.reduce((acc, item) => {
-            const controller = item[0];
-            if (!acc[controller]) {
-                acc[controller] = [];
-            }
-            acc[controller].push(item);
-            return acc;
-        }, {});
-    
-        Object.keys(groupedData).forEach(controller => {
-            const items = groupedData[controller];
-    
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td data-model="${items[0][0]}" data-controller="${items[0][0]}" data-interface="${items[0][1]}" data-formfactor="M.2 Series">
-                    <a href="${items[0][10]}" id="model-closed">${items[0][0]}</a>
-                </td>
-                <td>${createSelect(items, 1)}</td>
-                <td>${createSelect(items, 2)}</td>
-                <td>${createSelect(items, 3)}</td>
-                <td>${createSelect(items, 4)}</td>
-                <td>${createSelect(items, 5)}</td>
-                <td>${createSelect(items, 6)}</td>
-                <td>${createSelect(items, 7)}</td>
-                <td>${createSelect(items, 8)}</td>
-            `;
-    
-            tableBody.appendChild(tr);
-        });
-    
-        function createSelect(items, index) {
-            const uniqueValues = [...new Set(items.map(item => item[index]))];
-    
-            if (uniqueValues.length === 1) {
-                return uniqueValues[0]; // Return the single value if no dropdown is needed
-            }
-    
-            return `<select>
-                ${uniqueValues.map(value => `<option>${value}</option>`).join('')}
-            </select>`;
+    /* For larger screens, align image and text horizontally */
+    @media (min-width: 769px) {
+        .modal-body {
+            flex-direction: row; /* Align items in a row */
+            justify-content: space-between; /* Space between text and image */
+            align-items: flex-start; /* Align text and image at the top */
         }
-    </script>
+      
+    }
     
-        <h4 class="px-3"> UFS 2.2 </h2>
- 
- 
-        <section class="table__body">
-            <table id = "dataTable2">
-                <thead>
-                    <tr>
-                       
-                        <th> Controller </th>
-                        <th> Interface </th>
-                        <th> Capacity </th>
-                        <th> NAND Flash </th>
-                        <th> Sequential R/W Performance (up to) </th>
-                        <th>Package Type/Size(mm)</th>
-                        <th> Operating Temperature </th>
-                        <th> Grade </th>
-                        <th> Voltage</th>
-
-                       
-                    </tr>
-                </thead>
- 
-                <script>
-                   const arr2 = [
-                   [
-        "PS8317",
-        "HS-G4x2 UFS 2.2",
-        "32GB ~ 256GB",
-        "3D TLC",
-        "1065/970 MB/s",
-        "153 Ball (11x13x1.0mm)",
-        "-25°C to 85°C (Tcase)",
-        "N/A",
-        "VCC: 3.3V, VCCQ2: 1.8V",
-        "download.pdf",
-        "ps8317(3).html"
-    ],
-
-];
- 
- 
- 
-const table2 = document.getElementById('dataTable2');
- 
-arr2.forEach(item => {
-    const tr = document.createElement('tr');
- 
-    tr.innerHTML = `
-        <td data-model="${item[0]}" data-controller="PS5012-E12" data-interface="PCIe 3.0" data-formfactor="M.2 Series">
-            <a href="${item[10]}" id="model-closed">${item[0]}</a>
-        </td>
-        <td>${item[1]}</td>
-       
-        <td>${item[2]}</td>
-         <td>${item[3]}</td>
-          <td>${item[4]}</td>
-           <td>${item[5]}</td>
-        <td>${item[6]}</td>
-         <td>${item[7]}</td>
-
-         <td>${item[8]}</td>
-       
-       
-    `;
- 
-    table2.appendChild(tr);
-});
-                </script>
-               
-                   
-                   
-               
-            </table>
-        </section>
+    /* Modal text styling */
+    .modal-text {
+        flex: 1;
+        padding-right: 20px; /* Add space between text and image */
+        margin-bottom: 20px; /* Space below the text for smaller screens */
+        text-align: left; /* Ensure text is aligned left */
+    }
+    
+    /* Reduce padding for large screens */
+    @media (min-width: 768px) {
+        .modal-text {
+            margin-bottom: 0; /* Remove bottom margin on larger screens */
+        }
+    }
+    
+    /* Image styling */
+    .modal-image {
+        width: 100%;
+        max-width: 300px;
+        margin: auto; /* Fixed width for image */
+        height: auto;
+        object-fit: contain;
+    }
+    
+    /* Ensure image aligns better with text on larger screens */
+    @media (min-width: 1024px) {
         
-          <h4 class="px-3" data-aos="fade-up">UFS 2.1</h4>
+        .modal-image {
+            max-width: 300px; /* Reduce image width on larger screens */
+        }
+    }
+    
+    /* Adjust modal width and content padding for small screens */
+    @media (max-width: 600px) {
+        .modal-content {
+            width: 95%; /* Slightly smaller width on small screens */
+        }
+    }
+    
+        select {
+            border: 1px solid #e4d9d0fe;  /* Set the border color to #fff5 */
+            border-radius: 4px; /* Optional: add some border radius */
+            padding: 0px; /* Optional: add some padding */
+            background-color: transparent; /* Optional: set background color */
+            color: #000; /* Optional: set text color */
+            /* Remove default dropdown arrow */
+            width: 100%; /* Make the select full width */
+            max-width: 150px; /* Optional: set a max width */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+        
+        /* Optional: Add a custom arrow for the dropdown */
+        select::-ms-expand {
+            display: none; /* Hides default arrow for IE */
+        }
+    
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            select {
+                max-width: 100%; /* Allow full width on smaller screens */
+            }
+        }
+        /* Add hover effect for controller links */
+        .controller-link {
+            cursor: pointer; /* Change cursor to pointer */
+            
+        }
+    
+        .controller-link:hover {
+             /* Change background to orange */
+            color: #FF7918; /* Change text color to white */
+        }
+    </style>
+    <script>
+      const ufsArr = [
+          ["PS8317", "HS-G4x2 UFS 3.1", "64GB ~ 512GB", "3D TLC", "1550/1060 MB/s", "153 Ball (11.5x13x1.0/1.2mm)", "-40°C ~ 95°C", "AEC Grade 3", "VCC: 3.3V or 2.5V, VCCQ: 1.2V", "download.pdf", "images/ufs1.png"],
+          ["PS8317", "HS-G4x2 UFS 3.1", "64GB ~ 512GB", "3D TLC", "1550/1060 MB/s", "153 Ball (11.5x13x1.0/1.2mm)", "-40°C ~ 105°C", "AEC Grade 2", "VCC: 3.3V or 2.5V, VCCQ: 1.2V", "download.pdf", "images/ufs1.png"],
+          ["PS8325", "HS-G4x2 UFS 3.1", "256GB ~ 1TB", "3D TLC", "2150/1900 MB/s", "153 Ball (11x13x1.0mm)", "-25°C to 85°C (Tcase)", "N/A", "VCC: 2.5V, VCCQ: 1.2V", "download.pdf", "images/ufs3.png"],
+          ["PS8318", "HS-G4x2 UFS 3.1", "128GB ~ 512GB", "3D TLC", "2000/1425 MB/s", "153 Ball (11.5x13x1.0mm)", "-25°C to 85°C (Tcase)", "N/A", "VCC: 2.5V, VCCQ: 1.2V", "download.pdf", "images/ufs4.png"],
+          ["PS8317", "HS-G4x2 UFS 3.1", "64GB ~ 128GB", "3D TLC", "1650/1160 MB/s", "153 Ball (11x13x1.0mm)", "-25°C to 85°C (Tcase)", "N/A", "VCC: 2.5V, VCCQ: 1.2V", "download.pdf", "images/ufs1.png"]
+      ];
+  
+      const tableBody = document.getElementById('tableBody');
+      const modal = document.getElementById('modelModal');
+      const modalTitle = document.getElementById('modelTitle');
+      const modalInfo = document.getElementById('modelInfo');
+      const modalImage = document.getElementById('modelImage');
+      const closeModal = document.querySelector('.close');
+  
+      // Close modal when 'X' is clicked
+      closeModal.addEventListener('click', function() {
+          modal.style.display = 'none';
+      });
+  
+      // Close modal when clicking outside of it
+      window.addEventListener('click', function(event) {
+          if (event.target === modal) {
+              modal.style.display = 'none';
+          }
+      });
+  
+      // Create table rows without grouping by controller
+      ufsArr.forEach(item => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+              <td class="controller-link">${item[0]}</td>
+              <td>${item[1]}</td>
+              <td>${item[2]}</td>
+              <td>${item[3]}</td>
+              <td>${item[4]}</td>
+              <td>${item[5]}</td>
+              <td>${item[6]}</td>
+              <td>${item[7]}</td>
+              <td>${item[8]}</td>
+          `;
+          tableBody.appendChild(tr);
+  
+          // Add event listener to controller cell for modal
+          tr.querySelector('.controller-link').addEventListener('click', function() {
+              modalInfo.innerHTML = `
+                  <p>Controller: ${item[0]}</p>
+                  <p>Interface: ${item[1]}</p>
+                  <p>Capacity: ${item[2]}</p>
+                  <p>NAND Flash: ${item[3]}</p>
+                  <p>Sequential R/W Performance: ${item[4]}</p>
+                  <p>Package Type/Size: ${item[5]}</p>
+                  <p>Operating Temperature: ${item[6]}</p>
+                  <p>Grade: ${item[7]}</p>
+                  <p>Voltage: ${item[8]}</p>
+              `;
+              modalImage.src = item[10]; // Use the corresponding image
+              modal.style.display = 'block';
+          });
+      });
+  </script>
+  
+    </main>
+    <h4 class="px-3"> UFS 2.2 </h4>
+    <main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up">
+  
+      <section class="table__body">
+          <table id="dataTable2">
+              <thead>
+                  <tr>
+                      <th> Controller </th>
+                      <th> Interface </th>
+                      <th> Capacity </th>
+                      <th> NAND Flash </th>
+                      <th> Sequential R/W Performance (up to) </th>
+                      <th> Package Type/Size (mm) </th>
+                      <th> Operating Temperature </th>
+                      <th> Grade </th>
+                      <th> Voltage </th>
+                  </tr>
+              </thead>
+              <tbody id="tableBodyUFS2_2"></tbody>
+          </table>
+      </section>
+  </main>
+  
+  <!-- Modal structure -->
+  <div id="modelModalUFS22" class="modal" style="display:none;">
+      <div class="modal-content">
+          <span class="closeUFS22 py-2">&times;</span>
+          <div class="modal-body">
+              <div class="modal-text">
+                  <h2 id="modelTitleUFS22">UFS</h2>
+                  <p id="modelInfoUFS22">Information will appear here...</p>
+              </div>
+              <img id="modelImageUFS22" src="" alt="Model Image" class="modal-image">
+          </div>
+      </div>
+  </div>
+  
+  <style>
+      /* Modal styling */
+      .modal {
+          position: fixed;
+          z-index: 1;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.4);
+          display: none;
+      }
+  
+      .modal-content {
+          background-color: white;
+          margin: 10% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+          max-width: 900px;
+          position: relative;
+      }
+  
+      .closeUFS22 {
+          color: #aaa;
+          position: absolute;
+          top: 10px;
+          right: 25px;
+          font-size: 28px;
+          font-weight: bold;
+          z-index: 100;
+      }
+  
+      .closeUFS22:hover {
+          color: black;
+          cursor: pointer;
+      }
+  
+      .modal-body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+  
+      @media (min-width: 769px) {
+          .modal-body {
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: flex-start;
+          }
+      }
+  
+      .modal-text {
+          flex: 1;
+          padding-right: 20px;
+          margin-bottom: 20px;
+          text-align: left;
+      }
+  
+      .modal-image {
+          width: 100%;
+          max-width: 300px;
+          margin: auto;
+          height: auto;
+          object-fit: contain;
+      }
+  
+      @media (max-width: 600px) {
+          .modal-content {
+              width: 95%;
+          }
+      }
+  </style>
+ <script>
+  const arr2 = [
+      [
+          "PS8317",
+          "HS-G4x2 UFS 2.2",
+          "32GB ~ 256GB",
+          "3D TLC",
+          "1065/970 MB/s",
+          "153 Ball (11x13x1.0mm)",
+          "-25°C to 85°C (Tcase)",
+          "N/A",
+          "VCC: 3.3V, VCCQ2: 1.8V",
+          "download.pdf",
+          "images/ufs1.png"
+      ],
+  ];
+
+  const tableBodyUFS22 = document.getElementById('tableBodyUFS2_2');
+  const modalElementUFS22 = document.getElementById('modelModalUFS22');
+  const modalHeaderUFS22 = document.getElementById('modelTitleUFS22');
+  const modalContentUFS22 = document.getElementById('modelInfoUFS22');
+  const modalPictureUFS22 = document.getElementById('modelImageUFS22');
+  const closeModalButtonUFS22 = document.querySelector('.closeUFS22');
+
+  // Close modal when 'X' is clicked
+  closeModalButtonUFS22.addEventListener('click', function() {
+      modalElementUFS22.style.display = 'none';
+  });
+
+  // Close modal when clicking outside of it
+  window.addEventListener('click', function(event) {
+      if (event.target === modalElementUFS22) {
+          modalElementUFS22.style.display = 'none';
+      }
+  });
+
+  // Create table rows without grouping by controller
+  arr2.forEach(item => {
+      const tr = document.createElement('tr');
+
+      tr.innerHTML = `
+          <td>
+              <a href="${item[10]}" class="controller-link">${item[0]}</a>
+          </td>
+          <td>${item[1]}</td>
+          <td>${item[2]}</td>
+          <td>${item[3]}</td>
+          <td>${item[4]}</td>
+          <td>${item[5]}</td>
+          <td>${item[6]}</td>
+          <td>${item[7]}</td>
+          <td>${item[8]}</td>
+      `;
+
+      tableBodyUFS22.appendChild(tr);
+
+      // Add event listener to open modal on click
+      tr.querySelector('.controller-link').addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent default link behavior
+
+          modalContentUFS22.innerHTML = `
+              <p>Controller: ${item[0]}</p>
+              <p>Interface: ${item[1]}</p>
+              <p>Capacity: ${item[2]}</p>
+              <p>NAND Flash: ${item[3]}</p>
+              <p>Sequential R/W Performance: ${item[4]}</p>
+              <p>Package Type/Size: ${item[5]}</p>
+              <p>Operating Temperature: ${item[6]}</p>
+              <p>Grade: ${item[7]}</p>
+              <p>Voltage: ${item[8]}</p>
+          `;
+          modalPictureUFS22.src = item[10]; // Set the image source
+          modalElementUFS22.style.display = 'block';
+      });
+  });
+</script>
+
+<h4 class="px-3" data-aos="fade-up">UFS 2.1</h4>
+      <main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up">  
       
           <section class="table__body">
               <table id="dataTable2">
@@ -533,9 +722,126 @@ arr2.forEach(item => {
               </table>
           </section>
       
-      
-      
+      </main>
+      <!-- Modal structure -->
+    <div id="modelModal" class="modal" style="display:none;">
+      <div class="modal-content">
+          <span class="close py-2">&times;</span>
+          <div class="modal-body">
+              <div class="modal-text">
+                  <h2 id="modelTitle">UFS</h2>
+                  <p id="modelInfo">Information will appear here...</p>
+              </div>
+              <img id="modelImage" src="" alt="Model Image" class="modal-image">
+          </div>
+      </div>
+  </div>
 <style>
+   /* Modal styling */
+   .modal {
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        display: none;
+    }
+    
+    .modal-content {
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 900px; /* Add max-width for larger screens */
+        position: relative;
+    }
+    @media (max-width:768px) {
+      
+      .modal-content {
+          background-color: white;
+          margin: 30% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+          max-width: 900px; /* Add max-width for larger screens */
+          position: relative;
+      }
+    }
+    /* Close button styling */
+    .close {
+        color: #aaa;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 28px;
+        font-weight: bold;
+        z-index: 100;
+    }
+    
+    .close:hover {
+        color: black;
+        cursor: pointer;
+    }
+    
+    /* Flexbox layout for modal body */
+    .modal-body {
+        display: flex;
+        flex-direction: column; /* Stack items vertically for smaller screens */
+        align-items: center;
+    }
+    
+    /* For larger screens, align image and text horizontally */
+    @media (min-width: 769px) {
+        .modal-body {
+            flex-direction: row; /* Align items in a row */
+            justify-content: space-between; /* Space between text and image */
+            align-items: flex-start; /* Align text and image at the top */
+        }
+      
+    }
+    
+    /* Modal text styling */
+    .modal-text {
+        flex: 1;
+        padding-right: 20px; /* Add space between text and image */
+        margin-bottom: 20px; /* Space below the text for smaller screens */
+        text-align: left; /* Ensure text is aligned left */
+    }
+    
+    /* Reduce padding for large screens */
+    @media (min-width: 768px) {
+        .modal-text {
+            margin-bottom: 0; /* Remove bottom margin on larger screens */
+        }
+    }
+    
+    /* Image styling */
+    .modal-image {
+        width: 100%;
+        max-width: 300px;
+        margin: auto; /* Fixed width for image */
+        height: auto;
+        object-fit: contain;
+    }
+    
+    /* Ensure image aligns better with text on larger screens */
+    @media (min-width: 1024px) {
+        
+        .modal-image {
+            max-width: 300px; /* Reduce image width on larger screens */
+        }
+    }
+    
+    /* Adjust modal width and content padding for small screens */
+    @media (max-width: 600px) {
+        .modal-content {
+            width: 95%; /* Slightly smaller width on small screens */
+        }
+    }
+    
   select {
       border: 1px solid #e4d9d0fe;  /* Set the border color to #fff5 */
       border-radius: 4px; /* Optional: add some border radius */
@@ -561,114 +867,129 @@ arr2.forEach(item => {
   }
 </style>
       
-      <script>
-          const arr3 = [
-              [
-                  "PS8317",
-                  "HS-G3x2 UFS 2.1",
-                  "64GB ~ 256GB",
-                  "3D TLC",
-                  "1000/900 MB/s",
-                  "153 Ball (11.5x13x1.0/1.2mm)",
-                  "-40°C ~ 95°C",
-                  "N/A",
-                  "VCC: 3.3V, VCCQ2: 1.8V",
-                  "download.pdf",
-                  "ps8317(4).html"
-              ],
-              [
-                  "PS8317",
-                  "HS-G3x2 UFS 2.1",
-                  "64GB ~ 256GB",
-                  "3D TLC",
-                  "1000/900 MB/s",
-                  "153 Ball (11.5x13x1.0/1.2mm)",
-                  "-40°C ~ 95°C",
-                  "AEC Grade 3",
-                  "VCC: 3.3V, VCCQ2: 1.8V",
-                  "download.pdf",
-                  "ps8317(5).html"
-              ],
-              [
-                  "PS8317",
-                  "HS-G3x2 UFS 2.1",
-                  "64GB ~ 256GB",
-                  "3D TLC",
-                  "1000/900 MB/s",
-                  "153 Ball (11.5x13x1.0/1.2mm)",
-                  "-40°C ~ 105°C",
-                  "AEC Grade 2",
-                  "VCC: 3.3V, VCCQ2: 1.8V",
-                  "download.pdf",
-                  "ps8317(6).html"
-              ],
-          ];
-      
-          const tableBody2 = document.getElementById('tableBody2');
-      
-          // Group by controller
-          const groupedData2 = arr3.reduce((acc, item) => {
-              const controller = item[0];
-              if (!acc[controller]) {
-                  acc[controller] = [];
-              }
-              acc[controller].push(item);
-              return acc;
-          }, {});
-      
-          Object.keys(groupedData2).forEach(controller => {
-              const items = groupedData2[controller];
-      
-              const tr = document.createElement('tr');
-              tr.innerHTML = `
-                  <td data-model="${items[0][0]}" data-controller="${items[0][0]}" data-interface="${items[0][1]}" data-formfactor="M.2 Series">
-                      <a href="${items[0][10]}" id="model-closed">${items[0][0]}</a>
-                  </td>
-                  <td>${createSelect(items, 1)}</td>
-                  <td>${createSelect(items, 2)}</td>
-                  <td>${createSelect(items, 3)}</td>
-                  <td>${createSelect(items, 4)}</td>
-                  <td>${createSelect(items, 5)}</td>
-                  <td>${createSelect(items, 6)}</td>
-                  <td>${createSelect(items, 7)}</td>
-                  <td>${createSelect(items, 8)}</td>
-              `;
-      
-              tableBody2.appendChild(tr);
-          });
-      
-          function createSelect(items, index) {
-              const uniqueValues = [...new Set(items.map(item => item[index]))];
-      
-              if (uniqueValues.length === 1) {
-                  return uniqueValues[0]; // Return the single value if no dropdown is needed
-              }
-      
-              return `<select>
-                  ${uniqueValues.map(value => `<option>${value}</option>`).join('')}
-              </select>`;
-          }
-      </script>
-      
-    </main>
+<script>
+  const arr3 = [
+      [
+          "PS8317",
+          "HS-G3x2 UFS 2.1",
+          "64GB ~ 256GB",
+          "3D TLC",
+          "1000/900 MB/s",
+          "153 Ball (11.5x13x1.0/1.2mm)",
+          "-40°C ~ 95°C",
+          "N/A",
+          "VCC: 3.3V, VCCQ2: 1.8V",
+          "download.pdf",
+          "images/ufs1.png",
+          "ps8317(4).html"
+      ],
+      [
+          "PS8317",
+          "HS-G3x2 UFS 2.1",
+          "64GB ~ 256GB",
+          "3D TLC",
+          "1000/900 MB/s",
+          "153 Ball (11.5x13x1.0/1.2mm)",
+          "-40°C ~ 95°C",
+          "AEC Grade 3",
+          "VCC: 3.3V, VCCQ2: 1.8V",
+          "download.pdf",
+          "images/ufs1.png",
+          "ps8317(5).html"
+      ],
+      [
+          "PS8317",
+          "HS-G3x2 UFS 2.1",
+          "64GB ~ 256GB",
+          "3D TLC",
+          "1000/900 MB/s",
+          "153 Ball (11.5x13x1.0/1.2mm)",
+          "-40°C ~ 105°C",
+          "AEC Grade 2",
+          "VCC: 3.3V, VCCQ2: 1.8V",
+          "download.pdf",
+          "images/ufs1.png",
+          "ps8317(6).html"
+      ],
+  ];
+
+  const tableBody2 = document.getElementById('tableBody2');
+  const modalElement = document.getElementById('modelModal');
+  const modalHeader = document.getElementById('modelTitle');
+  const modalContent = document.getElementById('modelInfo');
+  const modalPicture = document.getElementById('modelImage');
+  const closeModalButton = document.querySelector('.close');
+
+  // Close modal when 'X' is clicked
+  closeModalButton.addEventListener('click', function() {
+      modalElement.style.display = 'none';
+  });
+
+  // Close modal when clicking outside of it
+  window.addEventListener('click', function(event) {
+      if (event.target === modalElement) {
+          modalElement.style.display = 'none';
+      }
+  });
+
+  // Directly iterate over arr3 and create rows
+  arr3.forEach(item => {
+      const tr = document.createElement('tr');
+
+      tr.innerHTML = `
+          <td data-model="${item[0]}" data-controller="${item[0]}" data-interface="${item[1]}" data-formfactor="M.2 Series">
+              <a href="${item[10]}" class="controller-link" id="model-closed">${item[0]}</a>
+          </td>
+          <td>${item[1]}</td>
+          <td>${item[2]}</td>
+          <td>${item[3]}</td>
+          <td>${item[4]}</td>
+          <td>${item[5]}</td>
+          <td>${item[6]}</td>
+          <td>${item[7]}</td>
+          <td>${item[8]}</td>
+      `;
+
+      tableBody2.appendChild(tr);
+
+      // Add event listener to controller link for modal
+      tr.querySelector('.controller-link').addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent default link behavior
+
+          modalContent.innerHTML = `
+              <p>Controller: ${item[0]}</p>
+              <p>Interface: ${item[1]}</p>
+              <p>Capacity: ${item[2]}</p>
+              <p>NAND Flash: ${item[3]}</p>
+              <p>Sequential R/W Performance: ${item[4]}</p>
+              <p>Package Type/Size: ${item[5]}</p>
+              <p>Operating Temperature: ${item[6]}</p>
+              <p>Grade: ${item[7]}</p>
+              <p>Voltage: ${item[8]}</p>
+          `;
+          modalPicture.src = item[10]; // Set the image source
+          modalElement.style.display = 'block';
+      });
+  });
+
+  // Function to create select dropdowns
+  function createSelect(items, index) {
+      const uniqueValues = [...new Set(items.map(item => item[index]))];
+
+      if (uniqueValues.length === 1) {
+          return uniqueValues[0]; // Return the single value if no dropdown is needed
+      }
+
+      return `<select>
+          ${uniqueValues.map(value => `<option>${value}</option>`).join('')}
+      </select>`;
+  }
+</script>
+
+    
    
    
-   <div class="container" id="modal-opened">
-  <div class="modal">
- 
-    <div class="details">
-      <h1 class="title">Your Title</h1>
-      <p class="description">Slogan will be here at this place.</p>
-    </div>
- 
-    <p class="txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex dicta maiores libero minus obcaecati iste optio, eius labore repellendus.</p>
- 
-    <button class="btn">Button &rarr;</button>
- 
-    <a href="#modal-closed" class="link-2"></a>
- 
-  </div>
-</div>
+  
  
 <br><br>
 <footer class="footer">
