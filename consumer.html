@@ -307,7 +307,7 @@
             <span class="close py-2">&times;</span>
             <div class="modal-body">
                 <div class="modal-text">
-                    <h2 id="modelTitle">Model Information</h2>
+                    <h2 id="modelTitle">Consumer SSD</h2>
                     <p id="modelInfo">Information will appear here...</p>
                 </div>
                 <img id="modelImage" src="" alt="Model Image" class="modal-image">
@@ -335,18 +335,13 @@ closeModal.addEventListener('click', function() {
     console.log('Close button clicked'); // Debugging line
     modal.style.display = 'none';
 });
-
 // Close modal when clicking outside of it
 window.addEventListener('click', function(event) {
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-});
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
 
-// Prevent clicks on the modal from bubbling up
-modal.addEventListener('click', function(event) {
-    event.stopPropagation(); // Prevent click event from bubbling up
-});
 
     
         arr.forEach(item => {
@@ -372,8 +367,9 @@ modal.addEventListener('click', function(event) {
             const modelLink = tr.querySelector('.model-link');
             modelLink.addEventListener('click', function(event) {
                 event.preventDefault();
-                modalTitle.textContent = `Model: ${item[0]}`;
+                
                 modalInfo.innerHTML = `
+                    <p>Model: ${item[0]}</p>
                     <p>Interface: ${item[1]}</p>
                     <p>Form Factor: ${item[2]}</p>
                     <p>Capacity: ${item[3]}</p>
@@ -387,60 +383,110 @@ modal.addEventListener('click', function(event) {
     </script>
     
     <style>
-        /* Modal styling */
-        .modal {
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.4);
-            display: none;
-        }
+       /* Modal styling */
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 900px; /* Add max-width for larger screens */
+    position: relative;
+}
+@media (max-width:768px) {
+  
+  .modal-content {
+      background-color: white;
+      margin: 30% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 900px; /* Add max-width for larger screens */
+      position: relative;
+  }
+}
+/* Close button styling */
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 100;
+}
+
+.close:hover {
+    color: black;
+    cursor: pointer;
+}
+
+/* Flexbox layout for modal body */
+.modal-body {
+    display: flex;
+    flex-direction: column; /* Stack items vertically for smaller screens */
+    align-items: center;
+}
+
+/* For larger screens, align image and text horizontally */
+@media (min-width: 769px) {
+    .modal-body {
+        flex-direction: row; /* Align items in a row */
+        justify-content: space-between; /* Space between text and image */
+        align-items: flex-start; /* Align text and image at the top */
+    }
+  
+}
+
+/* Modal text styling */
+.modal-text {
+    flex: 1;
+    padding-right: 20px; /* Add space between text and image */
+    margin-bottom: 20px; /* Space below the text for smaller screens */
+    text-align: left; /* Ensure text is aligned left */
+}
+
+/* Reduce padding for large screens */
+@media (min-width: 768px) {
+    .modal-text {
+        margin-bottom: 0; /* Remove bottom margin on larger screens */
+    }
+}
+
+/* Image styling */
+.modal-image {
+    width: 100%;
+    max-width: 300px;
+    margin: auto; /* Fixed width for image */
+    height: auto;
+    object-fit: contain;
+}
+
+/* Ensure image aligns better with text on larger screens */
+@media (min-width: 1024px) {
     
-        .modal-content {
-            background-color: white;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            position: relative;
-        }
-    
-        .close {
-            color: #aaa;
-            position: absolute;
-            top: 10px;
-            right: 25px;
-            font-size: 28px;
-            font-weight: bold;
-            z-index: 100;
-        }
-    
-        .close:hover
-         {
-            color: black;
-            cursor: pointer;
-        }
-    
-        /* Flexbox layout for modal body */
-        .modal-body {
-            display: flex;
-            align-items: center; /* Center align the items vertically */
-        }
-    
-        .modal-text {
-            flex: 1; /* Allow text to take the remaining space */
-            padding-right: 20px; /* Add some space between text and image */
-        }
-    
-        /* Style for the image inside the modal */
-        .modal-image {
-            width: 500px;        /* Fixed width for the image */
-            height: auto;        /* Maintain aspect ratio */
-            object-fit: contain; /* The image will scale to fit its container */
-        }
+    .modal-image {
+        max-width: 300px; /* Reduce image width on larger screens */
+    }
+}
+
+/* Adjust modal width and content padding for small screens */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95%; /* Slightly smaller width on small screens */
+    }
+}
     </style>
     
    

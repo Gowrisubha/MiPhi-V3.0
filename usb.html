@@ -283,113 +283,206 @@
       <br>
       <br>
       
-       <main class="table" id="customers_table" style="margin-left:2%;" >
-           
-       
-       
+      <main class="table" id="customers_table" style="margin-left:2%;">
         <section class="table__body">
-          <table id="dataTable">
-              <thead>
-                  <tr>
-                      <th>Controller</th>
-                      <th>Interface</th>
-                      <th>Connector Type</th>
-                      <th>Capacity</th>
-                      <th>Sequential R/W Performance (up to)</th>
-                  </tr>
-              </thead>
-              <tbody id="tableBody"></tbody>
-          </table>
-      </section>
-      
-      <style>
-        select {
-            border: 1px solid #e4d9d0fe;  /* Set the border color to #fff5 */
-            border-radius: 4px; /* Optional: add some border radius */
-            padding: 0px; /* Optional: add some padding */
-            background-color: transparent; /* Optional: set background color */
-            color: #000; /* Optional: set text color */
-            /* Remove default dropdown arrow */
-            width: 100%; /* Make the select full width */
-            max-width: 150px; /* Optional: set a max width */
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-        }
-        
-        /* Optional: Add a custom arrow for the dropdown */
-        select::-ms-expand {
-            display: none; /* Hides default arrow for IE */
-        }
-      
-        /* Responsive styles */
-        @media (max-width: 600px) {
-            select {
-                max-width: 100%; /* Allow full width on smaller screens */
-            }
-        }
-      </style>
-      <script>
-          const arr = [
-              ["PS5021-E21T", "USB 3.2 Gen 2x2", "Type C", "120GB ~ 2TB", "2000/2000 MB/s", "download.pdf", "PS5021-E21T.html"],
-              ["PS2251-18", "USB 3.2 Gen 2x2", "Type C", "500GB ~ 4TB", "1600/1500 MB/s", "download.pdf", "PS2251-18.html"],
-              ["PS5013-E13T", "USB 3.2 Gen 2x2", "Type C", "120GB ~ 2TB", "2000/1900 MB/s", "download.pdf", "PS5013-E13T.html"],
-              ["PS2251-17", "USB 3.2 Gen 2x1", "Type A, Type C, Type A + Type C", "250GB ~ 2TB", "1000/800 MB/s", "download.pdf", "PS2251-17.html"],
-              ["PS2251-17", "USB 3.2 Gen 2", "Type C", "250GB ~ 2TB", "1100/1000 MB/s", "download.pdf", "PS2251-17(1).html"],
-              ["PS3111-S11T", "USB 3.2 Gen 2", "Type C", "120GB ~ 1TB", "520/500 MB/s", "download.pdf", "PS3111-S11T.html"],
-              ["PS3111-S11T", "USB 3.2 Gen 1", "Micro-B", "120GB ~ 1TB", "400/390 MB/s", "download.pdf", "PS3111-S11T(1).html"],
-              ["PS2251-13", "USB 3.2 Gen 1", "Type A", "16GB ~ 256GB", "320/260 MB/s", "download.pdf", "PS2251-13.html"],
-              ["PS2251-19", "USB 3.2 Gen 1", "Type A, Type C, Type A + Micro-B, Type A + Type C", "32GB ~ 512GB", "220/100 MB/s", "download.pdf", "PS2251-19.html"],
-              ["PS2251-11", "USB 3.1 Gen 1", "Type A", "32GB ~ 512GB", "200/100 MB/s", "download.pdf", "PS2251-11.html"],
-              ["PS2251-70", "USB 2.0", "Type A, Type A + Micro-B, Type A + Type C", "4GB ~ 256GB", "30/15 MB/s", "download.pdf", "PS2251-70.html"]
-          ];
-      
-          const tableBody = document.getElementById('tableBody');
-      
-          // Group by Controller
-          const groupedData = arr.reduce((acc, item) => {
-              const controller = item[0];
-              if (!acc[controller]) {
-                  acc[controller] = [];
-              }
-              acc[controller].push(item);
-              return acc;
-          }, {});
-      
-          Object.keys(groupedData).forEach(controller => {
-              const items = groupedData[controller];
-      
-              const tr = document.createElement('tr');
-              tr.innerHTML = `
-                  <td data-model="${items[0][0]}" data-controller="${items[0][0]}" data-interface="${items[0][1]}" data-formfactor="M.2 Series">
-                      <a href="${items[0][6]}" id="model-closed">${items[0][0]}</a>
-                  </td>
-                  <td>${createSelect(items, 1)}</td>
-                  <td>${createSelect(items, 2)}</td>
-                  <td>${createSelect(items, 3)}</td>
-                  <td>${createSelect(items, 4)}</td>
-              `;
-      
-              tableBody.appendChild(tr);
-          });
-      
-          function createSelect(items, index) {
-              const uniqueValues = [...new Set(items.map(item => item[index]))];
-      
-              if (uniqueValues.length === 1) {
-                  return uniqueValues[0]; // Return the single value if no dropdown is needed
-              }
-      
-              return `<select>
-                  ${uniqueValues.map(value => `<option>${value}</option>`).join('')}
-              </select>`;
-          }
-      </script>
-      
- 
-       
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Controller</th>
+                        <th>Interface</th>
+                        <th>Connector Type</th>
+                        <th>Capacity</th>
+                        <th>Sequential R/W Performance (up to)</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </section>
     </main>
+    
+    <!-- Modal Structure -->
+    <div id="modelModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close py-2">&times;</span>
+            <div class="modal-body">
+                <div class="modal-text">
+                    <h2 id="modelTitle">USB</h2>
+                    <p id="modelInfo">Information will appear here...</p>
+                </div>
+                <img id="modelImage" src="" alt="Model Image" class="modal-image">
+            </div>
+        </div>
+    </div>
+    <style>
+      /* Modal styling */
+.modal {
+   position: fixed;
+   z-index: 1;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.4);
+   display: none;
+}
+
+.modal-content {
+   background-color: white;
+   margin: 10% auto;
+   padding: 20px;
+   border: 1px solid #888;
+   width: 80%;
+   max-width: 900px; /* Add max-width for larger screens */
+   position: relative;
+}
+@media (max-width:768px) {
+ 
+ .modal-content {
+     background-color: white;
+     margin: 30% auto;
+     padding: 20px;
+     border: 1px solid #888;
+     width: 80%;
+     max-width: 900px; /* Add max-width for larger screens */
+     position: relative;
+ }
+}
+/* Close button styling */
+.close {
+   color: #aaa;
+   position: absolute;
+   top: 10px;
+   right: 25px;
+   font-size: 28px;
+   font-weight: bold;
+   z-index: 100;
+}
+
+.close:hover {
+   color: black;
+   cursor: pointer;
+}
+
+/* Flexbox layout for modal body */
+.modal-body {
+   display: flex;
+   flex-direction: column; /* Stack items vertically for smaller screens */
+   align-items: center;
+}
+
+/* For larger screens, align image and text horizontally */
+@media (min-width: 769px) {
+   .modal-body {
+       flex-direction: row; /* Align items in a row */
+       justify-content: space-between; /* Space between text and image */
+       align-items: flex-start; /* Align text and image at the top */
+   }
+ 
+}
+
+/* Modal text styling */
+.modal-text {
+   flex: 1;
+   padding-right: 20px; /* Add space between text and image */
+   margin-bottom: 20px; /* Space below the text for smaller screens */
+   text-align: left; /* Ensure text is aligned left */
+}
+
+/* Reduce padding for large screens */
+@media (min-width: 768px) {
+   .modal-text {
+       margin-bottom: 0; /* Remove bottom margin on larger screens */
+   }
+}
+
+/* Image styling */
+.modal-image {
+   width: 100%;
+   max-width: 300px;
+   margin: auto; /* Fixed width for image */
+   height: auto;
+   object-fit: contain;
+}
+
+/* Ensure image aligns better with text on larger screens */
+@media (min-width: 1024px) {
    
-   
-   
+   .modal-image {
+       max-width: 300px; /* Reduce image width on larger screens */
+   }
+}
+
+/* Adjust modal width and content padding for small screens */
+@media (max-width: 600px) {
+   .modal-content {
+       width: 95%; /* Slightly smaller width on small screens */
+   }
+}
+   </style>
+ <script>
+  const arr = [
+      ["PS2251-21", "USB 4.0 Gen 3x2", "Type C", "UpTo 4TB", "4000/3600 MB/s", "download.pdf", "images/USB4.0.png"],
+      ["PS5021-E21T", "USB 3.2 Gen 2x2", "Type C", "120GB ~ 2TB", "2000/2000 MB/s", "download.pdf", "images/USB.png"],
+      ["PS2251-18", "USB 3.2 Gen 2x2", "Type C", "500GB ~ 4TB", "1600/1500 MB/s", "download.pdf", "images/USB.png"],
+      ["PS5013-E13T", "USB 3.2 Gen 2x2", "Type C", "120GB ~ 2TB", "2000/1900 MB/s", "download.pdf", "images/USB.png"],
+      ["PS2251-17", "USB 3.2 Gen 2x1", "Type A, Type C, Type A + Type C", "250GB ~ 2TB", "1000/800 MB/s", "download.pdf", "images/USB.png"],
+      ["PS2251-17", "USB 3.2 Gen 2", "Type C", "250GB ~ 2TB", "1100/1000 MB/s", "download.pdf", "images/USB.png"],
+      ["PS3111-S11T", "USB 3.2 Gen 2", "Type C", "120GB ~ 1TB", "520/500 MB/s", "download.pdf", "images/USB.png"],
+      ["PS3111-S11T", "USB 3.2 Gen 1", "Micro-B", "120GB ~ 1TB", "400/390 MB/s", "download.pdf", "images/USB.png"],
+      ["PS2251-13", "USB 3.2 Gen 1", "Type A", "16GB ~ 256GB", "320/260 MB/s", "download.pdf", "images/USB.png"],
+      ["PS2251-19", "USB 3.2 Gen 1", "Type A, Type C, Type A + Micro-B, Type A + Type C", "32GB ~ 512GB", "220/100 MB/s", "download.pdf", "images/USB.png"],
+      ["PS2251-11", "USB 3.1 Gen 1", "Type A", "32GB ~ 512GB", "200/100 MB/s", "download.pdf", "images/USB.png"],
+      ["PS2251-70", "USB 2.0", "Type A, Type A + Micro-B, Type A + Type C", "4GB ~ 256GB", "30/15 MB/s", "download.pdf", "images/USB.png"]
+  ];
+
+  const tableBody = document.getElementById('tableBody');
+  const modal = document.getElementById('modelModal');
+  const modalTitle = document.getElementById('modelTitle');
+  const modalInfo = document.getElementById('modelInfo');
+  const modalImage = document.getElementById('modelImage');
+  const closeModal = document.querySelector('.close');
+
+  // Close modal when 'X' is clicked
+  closeModal.addEventListener('click', function() {
+      modal.style.display = 'none';
+  });
+
+  // Close modal when clicking outside of it
+  window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+          modal.style.display = 'none';
+      }
+  });
+
+  // Create table rows for each item in the array
+  arr.forEach(item => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+          <td><a href="javascript:void(0);" class="controller-link" data-model="${item[0]}">${item[0]}</a></td>
+          <td>${item[1]}</td>
+          <td>${item[2]}</td>
+          <td>${item[3]}</td>
+          <td>${item[4]}</td>
+      `;
+
+      tableBody.appendChild(tr);
+
+      // Add event listener to controller link for modal
+      tr.querySelector('.controller-link').addEventListener('click', function() {
+          modalInfo.innerHTML = `
+              <p>Controller: ${item[0]}</p>
+              <p>Interface: ${item[1]}</p>
+              <p>Connector Type: ${item[2]}</p>
+              <p>Capacity: ${item[3]}</p>
+              <p>Sequential R/W Performance: ${item[4]}</p>
+              <a href="${item[5]}" download>Download Datasheet</a>
+          `;
+          modalImage.src = item[6]; // Assuming the 7th item is the image URL
+          modal.style.display = 'block';
+      });
+  });
+</script>
+
  
 <br><br>
    

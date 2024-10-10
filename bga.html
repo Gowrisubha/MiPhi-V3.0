@@ -283,123 +283,298 @@
      
       <br>
       <br>
-      <h4 style="margin-left: 2%;" data-aos="fade-up">PCIe 3.0</h4>
-       <main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up">
+<h4 style="margin-left: 2%;" data-aos="fade-up">PCIe 3.0</h4>
+<main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up">
+
+    <section class="table__body">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th> Controller </th>
+                    <th> Interface </th>
+                    <th> Form Factor</th>
+                    <th> Capacity </th>
+                    <th> Sequential R/W Performance (up to) </th>
+                    <th> Random R/W Performance (up to) </th>
+                </tr>
+            </thead>
+            <tbody id="tableBodyPCIe3"></tbody>
+        </table>
+    </section>
+</main>
+
+<!-- Modal structure for PCIe 3.0 -->
+<div id="modelModalPCIe3" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="closePCIe3 py-2">&times;</span>
+        <div class="modal-body">
+            <div class="modal-image">
+                <img id="modelImagePCIe3" src="" alt="Controller Image" style="max-width:100%; height:auto;"/>
+            </div>
+            <div class="modal-text">
+                <h2 id="modelTitlePCIe3">BGA SSD</h2>
+                <p id="modelInfoPCIe3">Information will appear here...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<h4 style="margin-left: 2%;">PCIe 4.0</h4>
+<main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up">
+    <section class="table__body">
+        <table id="dataTable1">
+            <thead>
+                <tr>
+                    <th> Controller </th>
+                    <th> Interface </th>
+                    <th> Form Factor</th>
+                    <th> Capacity </th>
+                    <th> Sequential R/W Performance (up to) </th>
+                    <th> Random R/W Performance (up to) </th>
+                </tr>
+            </thead>
+            <tbody id="tableBodyPCIe4"></tbody>
+        </table>
+    </section>
+</main>
+
+<!-- Modal structure for PCIe 4.0 -->
+<div id="modelModalPCIe4" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="closePCIe4 py-2">&times;</span>
+        <div class="modal-body">
+            <div class="modal-image">
+                <img id="modelImagePCIe4" src="" alt="Controller Image" style="max-width:100%; height:auto;"/>
+            </div>
+            <div class="modal-text">
+                <h2 id="modelTitlePCIe4">BGA SSD</h2>
+                <p id="modelInfoPCIe4">Information will appear here...</p>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+     /* Modal styling */
+     .modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 900px; /* Add max-width for larger screens */
+    position: relative;
+}
+@media (max-width:768px) {
+  
+  .modal-content {
+      background-color: white;
+      margin: 30% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 900px; /* Add max-width for larger screens */
+      position: relative;
+  }
+}
+/* Close button styling */
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 40px;
+    font-weight: bold;
+    z-index: 100;
+}
+
+.close:hover {
+    color: black;
+    cursor: pointer;
+}
+
+/* Flexbox layout for modal body */
+.modal-body {
+    display: flex;
+    flex-direction: column; /* Stack items vertically for smaller screens */
+    align-items: center;
+}
+
+/* For larger screens, align image and text horizontally */
+@media (min-width: 769px) {
+    .modal-body {
+        flex-direction: row; /* Align items in a row */
+        justify-content: space-between; /* Space between text and image */
+        align-items: flex-start; /* Align text and image at the top */
+    }
+  
+}
+
+/* Modal text styling */
+.modal-text {
+    flex: 1;
+    padding-right: 20px; /* Add space between text and image */
+    margin-bottom: 20px; /* Space below the text for smaller screens */
+    text-align: left; /* Ensure text is aligned left */
+}
+
+/* Reduce padding for large screens */
+@media (min-width: 768px) {
+    .modal-text {
+        margin-bottom: 0; /* Remove bottom margin on larger screens */
+    }
+}
+
+/* Image styling */
+.modal-image {
+    width: 100%;
+    max-width: 300px;
+    margin: auto; /* Fixed width for image */
+    height: auto;
+    object-fit: contain;
+}
+
+/* Ensure image aligns better with text on larger screens */
+@media (min-width: 1024px) {
+    
+    .modal-image {
+        max-width: 300px; /* Reduce image width on larger screens */
+    }
+}
+
+/* Adjust modal width and content padding for small screens */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95%; /* Slightly smaller width on small screens */
+    }
+}
+</style>
+
+<script>
+    // PCIe 3.0 data
+    const arr = [
+        ["PS5013-E13T", "PCIe 3.0", "M.2 Series BGA SSD CFX™", "128GB-4TB", "5000/4800 MB/s", "800K/950K IOPS"],
+        ["PS5013-E13TI", "PCIe 3.0", "M.2 Series BGA SSD", "256GB-2048GB", "4700/3900 MB/s", "600K/600K IOPS"]
+    ];
+
+    const tableBodyPCIe3 = document.getElementById('tableBodyPCIe3');
+    const modalElementPCIe3 = document.getElementById('modelModalPCIe3');
+    const modalHeaderPCIe3 = document.getElementById('modelTitlePCIe3');
+    const modalContentPCIe3 = document.getElementById('modelInfoPCIe3');
+    const modalImagePCIe3 = document.getElementById('modelImagePCIe3');
+    const closeModalButtonPCIe3 = document.querySelector('.closePCIe3');
+
+    // Close modal when 'X' is clicked
+    closeModalButtonPCIe3.addEventListener('click', function() {
+        modalElementPCIe3.style.display = 'none';
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+        if (event.target === modalElementPCIe3) {
+            modalElementPCIe3.style.display = 'none';
+        }
+    });
+
+    arr.forEach(item => {
+        const tr = document.createElement('tr');
+
+        tr.innerHTML = `
+            <td><a href="#" class="controller-linkPCIe3">${item[0]}</a></td>
+            <td>${item[1]}</td>
+            <td>${item[2]}</td>
+            <td>${item[3]}</td>
+            <td>${item[4]}</td>
+            <td>${item[5]}</td>
+        `;
+
+        tableBodyPCIe3.appendChild(tr);
+
+        // Add event listener for modal
+        tr.querySelector('.controller-linkPCIe3').addEventListener('click', function(event) {
+            event.preventDefault();
            
-       
-       
-       
-        <section class="table__body">
-            <table id = "dataTable">
-                <thead>
-                    <tr>
-                       
-                        <th> Controller </th>
-                        <th> Interface </th>
-                        <th> Form Factor</th>
-                        <th> Capacity </th>
-                        <th> Sequential R/W Performance (up to) </th>
-                        <th>Random R/W Performance (up to)</th>
-                       
-                     
- 
-                    </tr>
-                </thead>
- 
-                <script>
-                    const arr = [
-    ["PS5013-E13T", "PCIe 3.0", "M.2 Series BGA SSD CFX™", "128GB-4TB", "5000/4800 MB/s", "800K/950K IOPS"],
-    ["PS5013-E13TI", "PCIe 3.0", "M.2 Series BGA SSD", "256GB-2048GB", "4700/3900 MB/s", "600K/600K IOPS"]]
- 
-const table = document.getElementById('dataTable');
- 
-arr.forEach(item => {
-    const tr = document.createElement('tr');
-    console.log(item)
- 
-    tr.innerHTML = `
-        <td data-model="${item[0]}" data-controller="PS5012-E12" data-interface="PCIe 3.0" data-formfactor="M.2 Series">
-             ${item[0]}
-        </td>
-        <td>${item[1]}</td>
-       
-        <td>${item[2]}</td>
-         <td>${item[3]}</td>
-          <td>${item[4]}</td>
-           <td>${item[5]}</td>
-    `;
- 
-    table.appendChild(tr);
-});
-                </script>
-               
-                   
-                   
-               
-            </table>
-        </section>
-    </main>
-   
-    <h4 style = "margin-left : 2%"> PCIe 4.0</h4>
- 
-    <main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up">
-        <section class="table__body">
-            <table id = "dataTable1">
-                <thead>
-                    <tr>
-                       
-                      <th> Controller </th>
-                      <th> Interface </th>
-                      <th> Form Factor</th>
-                      <th> Capacity </th>
-                      <th> Sequential R/W Performance (up to) </th>
-                      <th>Random R/W Performance (up to)</th>
-                       
- 
-                    </tr>
-                </thead>
- 
-                <script>
-                   const arr2 = [
-    ["PS5021-E21T", "PCIe 4.0", "M.2 Series BGA SSD CFX™", "128GB - 4TB", "5000/4800 MB/s", "800K/950K IOPS"],
-    ["PS5021-E21TI", "PCIe 4.0", "M.2 Series BGA SSD", "256GB-2048GB", "4700/3900 MB/s", "600K/600K IOPS"],
-   
-];
- 
- 
- 
-const table2 = document.getElementById('dataTable1');
- 
-arr2.forEach(item => {
-    const tr = document.createElement('tr');
- 
-    tr.innerHTML = `
-        <td data-model="${item[0]}" data-controller="PS5012-E12" data-interface="PCIe 3.0" data-formfactor="M.2 Series">
-         ${item[0]}
-        </td>
-        <td>${item[1]}</td>
-       
-        <td>${item[2]}</td>
-         <td>${item[3]}</td>
-          <td>${item[4]}</td>
-           <td>${item[5]}</td>
-     
-       
-       
-    `;
- 
-    table2.appendChild(tr);
-});
-                </script>
-               
-                   
-                   
-               
-            </table>
-        </section>
-    </main>
-   
- 
+            modalContentPCIe3.innerHTML = `
+            <p>Controller:${item[0]}</p>
+                <p>Interface: ${item[1]}</p>
+                <p>Form Factor: ${item[2]}</p>
+                <p>Capacity: ${item[3]}</p>
+                <p>Sequential R/W Performance: ${item[4]}</p>
+                <p>Random R/W Performance: ${item[5]}</p>
+            `;
+            modalImagePCIe3.src = "images/BGA_SSD.png"; // Assuming images are stored in the 'images' folder
+            modalElementPCIe3.style.display = 'block';
+        });
+    });
+
+    // PCIe 4.0 data
+    const arr2 = [
+        ["PS5021-E21T", "PCIe 4.0", "M.2 Series BGA SSD CFX™", "128GB - 4TB", "5000/4800 MB/s", "800K/950K IOPS"],
+        ["PS5021-E21TI", "PCIe 4.0", "M.2 Series BGA SSD", "256GB-2048GB", "4700/3900 MB/s", "600K/600K IOPS"]
+    ];
+
+    const tableBodyPCIe4 = document.getElementById('tableBodyPCIe4');
+    const modalElementPCIe4 = document.getElementById('modelModalPCIe4');
+    const modalHeaderPCIe4 = document.getElementById('modelTitlePCIe4');
+    const modalContentPCIe4 = document.getElementById('modelInfoPCIe4');
+    const modalImagePCIe4 = document.getElementById('modelImagePCIe4');
+    const closeModalButtonPCIe4 = document.querySelector('.closePCIe4');
+
+    // Close modal when 'X' is clicked
+    closeModalButtonPCIe4.addEventListener('click', function() {
+        modalElementPCIe4.style.display = 'none';
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+        if (event.target === modalElementPCIe4) {
+            modalElementPCIe4.style.display = 'none';
+        }
+    });
+
+    arr2.forEach(item => {
+        const tr = document.createElement('tr');
+
+        tr.innerHTML = `
+            <td><a href="#" class="controller-linkPCIe4">${item[0]}</a></td>
+            <td>${item[1]}</td>
+            <td>${item[2]}</td>
+            <td>${item[3]}</td>
+            <td>${item[4]}</td>
+            <td>${item[5]}</td>
+        `;
+
+        tableBodyPCIe4.appendChild(tr);
+
+        // Add event listener for modal
+        tr.querySelector('.controller-linkPCIe4').addEventListener('click', function(event) {
+            event.preventDefault();
+           
+            modalContentPCIe4.innerHTML = `
+            <p>Controller: ${item[0]}</p>
+                <p>Interface: ${item[1]}</p>
+                <p>Form Factor: ${item[2]}</p>
+                <p>Capacity: ${item[3]}</p>
+                <p>Sequential R/W Performance: ${item[4]}</p>
+                <p>Random R/W Performance: ${item[5]}</p>
+            `;
+            modalImagePCIe4.src = `images/BGA_SSD.png`; // Assuming images are stored in the 'images' folder
+            modalElementPCIe4.style.display = 'block';
+        });
+    });
+</script>
+
    
       <br><br>
    

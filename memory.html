@@ -283,120 +283,46 @@
     </section>
      <br>
       <br>
-      <main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up" >
-         <h4 style="margin-left: 2%;" data-aos="fade-up">SD </h4>
-           
-       
-         <section class="table__body">
-          <table id="dataTable">
-              <thead>
-                  <tr>
-                      <th>Controller</th>
-                      <th>Form Factor</th>
-                      <th>Sequential R/W Performance (up to)</th>
-                      <th>Capacity</th>
-                      <th>NAND Flash</th>
-                      <th>Application Performance Class</th>
-                      <th>Video Speed Class</th>
-                      <th>UHS Speed</th>
-                  </tr>
-              </thead>
-              <tbody id="tableBody"></tbody>
-          </table>
-      </section>
-      
-      <style>
-        select {
-            border: 1px solid #e4d9d0fe;  /* Set the border color to #fff5 */
-            border-radius: 4px; /* Optional: add some border radius */
-            padding: 0px; /* Optional: add some padding */
-            background-color: transparent; /* Optional: set background color */
-            color: #000; /* Optional: set text color */
-            /* Remove default dropdown arrow */
-            width: 100%; /* Make the select full width */
-            max-width: 150px; /* Optional: set a max width */
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-        }
-        
-        /* Optional: Add a custom arrow for the dropdown */
-        select::-ms-expand {
-            display: none; /* Hides default arrow for IE */
-        }
-      
-        /* Responsive styles */
-        @media (max-width: 600px) {
-            select {
-                max-width: 100%; /* Allow full width on smaller screens */
-            }
-        }
-      </style>
-      <script>
-          const arr = [
-              ["PS8210", "SD", "20/20 MB/s", "128MB - 2GB", "2D SLC", "N/A", "N/A", "N/A", "download.pdf", "ps8210.html"],
-              ["PS8210", "SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V30(UHS-I)", "U3", "download.pdf", "ps8210(1).html"],
-              ["PS8131", "SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V10(UHS-I)", "U1", "download.pdf", "ps8131.html"],
-              ["PS8210", "SD", "20/20 MB/s", "128MB~2GB", "2D SLC", "N/A", "V30(UHS-I)", "N/A", "download.pdf", "ps8210(2).html"],
-              ["PS8210", "SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3", "download.pdf", "ps8210(3).html"],
-              ["PS8131", "SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U1", "download.pdf", "ps8131(1).html"],
-              ["PS8210", "SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3", "download.pdf", "ps8210(4).html"],
-              ["PS8131", "SD", "100/45 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U3", "download.pdf", "ps8131(2).html"],
-              ["PS8132", "SD", "100/90 MB/s", "64GB~512GB", "3D TLC", "A2", "V30(UHS-I)", "U3", "download.pdf", "ps8132.html"],
-              ["PS8132", "SD", "100/90 MB/s", "16GB~128GB", "3D pSLC", "A2", "V30(UHS-I)", "U3", "download.pdf", "ps8132(1).html"],
-              ["PS8229", "SD", "170/90 MB/s", "128GB~1TB", "3D QLC", "A2", "V30(UHS-I)", "U3", "download.pdf", "ps8229(3).html"],
-              ["PS8601", "SD", "280/150 MB/s", "128GB~1TB", "3D TLC", "A1", "V60(UHS-II)", "U3", "download.pdf", "ps8601.html"],
-              ["PS8601", "SD", "280/250 MB/s", "64GB~512GB", "3D pSLC", "N/A", "V90(UHS-II)", "U3", "download.pdf", "ps8601(1).html"],
-              ["PS5017", "SD", "870/740 MB/s", "256GB~512GB", "3D QLC", "A1", "V90(UHS-II)", "U3", "download.pdf", "ps5017.html"]
-          ];
-      
-          const tableBody = document.getElementById('tableBody');
-      
-          // Group by Controller
-          const groupedData = arr.reduce((acc, item) => {
-              const controller = item[0];
-              if (!acc[controller]) {
-                  acc[controller] = [];
-              }
-              acc[controller].push(item);
-              return acc;
-          }, {});
-      
-          Object.keys(groupedData).forEach(controller => {
-              const items = groupedData[controller];
-      
-              const tr = document.createElement('tr');
-              tr.innerHTML = `
-                  <td data-model="${items[0][0]}" data-controller="${items[0][0]}" data-interface="${items[0][1]}" data-formfactor="M.2 Series">
-                      <a href="${items[0][9]}" id="model-closed">${items[0][0]}</a>
-                  </td>
-                  <td>${createSelect(items, 1)}</td>
-                  <td>${createSelect(items, 2)}</td>
-                  <td>${createSelect(items, 3)}</td>
-                  <td>${createSelect(items, 4)}</td>
-                  <td>${createSelect(items, 5)}</td>
-                  <td>${createSelect(items, 6)}</td>
-                  <td>${createSelect(items, 7)}</td>
-              `;
-      
-              tableBody.appendChild(tr);
-          });
-      
-          function createSelect(items, index) {
-              const uniqueValues = [...new Set(items.map(item => item[index]))];
-      
-              if (uniqueValues.length === 1) {
-                  return uniqueValues[0]; // Return the single value if no dropdown is needed
-              }
-      
-              return `<select>
-                  ${uniqueValues.map(value => `<option>${value}</option>`).join('')}
-              </select>`;
-          }
-      </script>
-      
- 
-        <h4 style = "margin-left : 2%"> Micro SD </h2>
- 
-          <section class="table__body">
+      <h4 style="margin-left: 2%;">SD</h4>
+      <main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up">
+    
+        <section class="table__body">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Controller</th>
+                        <th>Form Factor</th>
+                        <th>Sequential R/W Performance (up to)</th>
+                        <th>Capacity</th>
+                        <th>NAND Flash</th>
+                        <th>Application Performance Class</th>
+                        <th>Video Speed Class</th>
+                        <th>UHS Speed</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </section>
+    </main>
+    
+    <!-- Modal structure -->
+    <div id="modelModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close py-2">&times;</span>
+            <div class="modal-body">
+                <div class="modal-text">
+                    <h2 id="modelTitle">Memory Card</h2>
+                    <p id="modelInfo">Information will appear here...</p>
+                </div>
+                <img id="modelImage" src="" alt="Model Image" class="modal-image">
+            </div>
+        </div>
+    </div>
+    
+    <h4 style="margin-left: 2%;">Micro SD</h4>
+    <main class="table" id="customers_table" style="margin-left:2%;" data-aos="fade-up">
+    
+        <section class="table__body">
             <table id="dataTable2">
                 <thead>
                     <tr>
@@ -413,94 +339,255 @@
                 <tbody id="tableBody2"></tbody>
             </table>
         </section>
-        
-        <style>
-          select {
-              border: 1px solid #e4d9d0fe;  /* Set the border color to #fff5 */
-              border-radius: 4px; /* Optional: add some border radius */
-              padding: 0px; /* Optional: add some padding */
-              background-color: transparent; /* Optional: set background color */
-              color: #000; /* Optional: set text color */
-              /* Remove default dropdown arrow */
-              width: 100%; /* Make the select full width */
-              max-width: 150px; /* Optional: set a max width */
-              box-sizing: border-box; /* Include padding and border in the element's total width and height */
-          }
-          
-          /* Optional: Add a custom arrow for the dropdown */
-          select::-ms-expand {
-              display: none; /* Hides default arrow for IE */
-          }
-        
-          /* Responsive styles */
-          @media (max-width: 600px) {
-              select {
-                  max-width: 100%; /* Allow full width on smaller screens */
-              }
-          }
-        </style>
-        
-        <script>
-            const arr2 = [
-                ["PS8210", "Micro SD", "20/20 MB/s", "128MB - 2GB", "2D SLC", "N/A", "N/A", "N/A", "download.pdf", "ps8210(5).html"],
-                ["PS8210", "Micro SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V30(UHS-I)", "U3", "download.pdf", "ps8210(6).html"],
-                ["PS8131", "Micro SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V10(UHS-I)", "U1", "download.pdf", "ps8131(3).html"],
-                ["PS8210", "Micro SD", "20/20 MB/s", "128MB~2GB", "2D SLC", "N/A", "V30(UHS-I)", "N/A", "download.pdf", "ps8210(7).html"],
-                ["PS8210", "Micro SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3", "download.pdf", "ps8210(8).html"],
-                ["PS8131", "Micro SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U1", "download.pdf", "ps8131(4).html"],
-                ["PS8210", "Micro SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3", "download.pdf", "ps8210(9).html"],
-                ["PS8131", "Micro SD", "100/45 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U3", "download.pdf", "ps8131(5).html"],
-                ["PS8132", "Micro SD", "100/90 MB/s", "64GB~512GB", "3D TLC", "A2", "V30(UHS-I)", "U3", "download.pdf", "ps8132(2).html"],
-                ["PS8132", "Micro SD", "100/90 MB/s", "16GB~128GB", "3D pSLC", "A2", "V30(UHS-I)", "U3", "download.pdf", "ps8132(3).html"],
-                ["PS8229", "Micro SD", "170/90 MB/s", "128GB~1TB", "3D QLC", "A2", "V30(UHS-I)", "U3", "download.pdf", "ps8229(4).html"]
-            ];
-        
-            const tableBody2 = document.getElementById('tableBody2');
-        
-            // Group by Controller
-            const groupedData2 = arr2.reduce((acc, item) => {
-                const controller = item[0];
-                if (!acc[controller]) {
-                    acc[controller] = [];
-                }
-                acc[controller].push(item);
-                return acc;
-            }, {});
-        
-            Object.keys(groupedData2).forEach(controller => {
-                const items = groupedData2[controller];
-        
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td data-model="${items[0][0]}" data-controller="${items[0][0]}" data-interface="${items[0][1]}" data-formfactor="Micro SD">
-                        <a href="${items[0][9]}" id="model-closed">${items[0][0]}</a>
-                    </td>
-                    <td>${createSelect(items, 1)}</td>
-                    <td>${createSelect(items, 2)}</td>
-                    <td>${createSelect(items, 3)}</td>
-                    <td>${createSelect(items, 4)}</td>
-                    <td>${createSelect(items, 5)}</td>
-                    <td>${createSelect(items, 6)}</td>
-                    <td>${createSelect(items, 7)}</td>
-                `;
-        
-                tableBody2.appendChild(tr);
-            });
-        
-            function createSelect(items, index) {
-                const uniqueValues = [...new Set(items.map(item => item[index]))];
-        
-                if (uniqueValues.length === 1) {
-                    return uniqueValues[0]; // Return the single value if no dropdown is needed
-                }
-        
-                return `<select>
-                    ${uniqueValues.map(value => `<option>${value}</option>`).join('')}
-                </select>`;
-            }
-        </script>
-        
     </main>
+    
+    <!-- Modal structure for Micro SD -->
+    <div id="modelModalMicroSD" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close py-2">&times;</span>
+            <div class="modal-body">
+                <div class="modal-text">
+                    <h2 id="modelTitleMicroSD">Memory Card</h2>
+                    <p id="modelInfoMicroSD">Information will appear here...</p>
+                </div>
+                <img id="modelImageMicroSD" src="" alt="Model Image" class="modal-image">
+            </div>
+        </div>
+    </div>
+    
+    <style>
+    /* Modal styling */
+    .modal {
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        display: none;
+    }
+    td:first-child:hover {
+      /* Change to your desired hover color */
+      color: #FF7918; /* Text color change */
+      cursor: pointer;
+  }
+    .modal-content {
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 900px; /* Add max-width for larger screens */
+        position: relative;
+    }
+    
+    @media (max-width: 768px) {
+        .modal-content {
+            margin: 30% auto;
+            padding: 20px;
+        }
+    }
+    
+    /* Close button styling */
+    .close {
+        color: #aaa;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 28px;
+        font-weight: bold;
+        z-index: 100;
+    }
+    
+    .close:hover {
+        color: black;
+        cursor: pointer;
+    }
+    
+    /* Flexbox layout for modal body */
+    .modal-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    @media (min-width: 769px) {
+        .modal-body {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+    }
+    
+    /* Modal text styling */
+    .modal-text {
+        flex: 1;
+        padding-right: 20px;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+    
+    @media (min-width: 768px) {
+        .modal-text {
+            margin-bottom: 0;
+        }
+    }
+    
+    /* Image styling */
+    .modal-image {
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+        height: auto;
+        object-fit: contain;
+    }
+    
+    @media (min-width: 1024px) {
+        .modal-image {
+            max-width: 300px;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .modal-content {
+            width: 95%;
+        }
+    }
+    
+    select {
+        border: 1px solid #e4d9d0fe;
+        border-radius: 4px;
+        padding: 0px;
+        background-color: transparent;
+        color: #000;
+        width: 100%;
+        max-width: 150px;
+        box-sizing: border-box;
+    }
+    
+    select::-ms-expand {
+        display: none;
+    }
+    
+    @media (max-width: 600px) {
+        select {
+            max-width: 100%;
+        }
+    }
+   
+    </style>
+    
+    <script>
+    const arrSD = [
+    ["PS8210", "SD", "20/20 MB/s", "128MB - 2GB", "2D SLC", "N/A", "N/A", "N/A","images/sd1.png"],
+              ["PS8210", "SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V30(UHS-I)", "U3","images/sd6.png"],
+              ["PS8131", "SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V10(UHS-I)", "U1","images/sd6.png"],
+              ["PS8210", "SD", "20/20 MB/s", "128MB~2GB", "2D SLC", "N/A", "V30(UHS-I)", "N/A","images/sd7.png"],
+              ["PS8210", "SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3", "images/sd6.png"],
+              ["PS8131", "SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U1", "images/sd7.png"],
+              ["PS8210", "SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)","images/sd6.png"],
+              ["PS8131", "SD", "100/45 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U3","images/sd7.png"],
+              ["PS8132", "SD", "100/90 MB/s", "64GB~512GB", "3D TLC", "A2", "V30(UHS-I)", "U3", "images/sd7.png"],
+              ["PS8132", "SD", "100/90 MB/s", "16GB~128GB", "3D pSLC", "A2", "V30(UHS-I)", "U3","images/sd7.png"],
+              ["PS8229", "SD", "170/90 MB/s", "128GB~1TB", "3D QLC", "A2", "V30(UHS-I)", "U3","images/sd10.png"],
+              ["PS8601", "SD", "280/150 MB/s", "128GB~1TB", "3D TLC", "A1", "V60(UHS-II)", "U3", "images/sd12.png"],
+              ["PS8601", "SD", "280/250 MB/s", "64GB~512GB", "3D pSLC", "N/A", "V90(UHS-II)", "U3", "images/sd13.png"],
+              ["PS5017", "SD", "870/740 MB/s", "256GB~512GB", "3D QLC", "A1", "V90(UHS-II)", "U3", "images/sd13.png"]
+    ];
+    
+    const arrMicroSD = [
+    ["PS8210", "Micro SD", "20/20 MB/s", "128MB - 2GB", "2D SLC", "N/A", "N/A", "N/A", "images/msd1.png"],
+                ["PS8210", "Micro SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V30(UHS-I)", "U3", "images/msd2.png"],
+                ["PS8131", "Micro SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V10(UHS-I)", "U1","images/msd3.png"],
+                ["PS8210", "Micro SD", "20/20 MB/s", "128MB~2GB", "2D SLC", "N/A", "V30(UHS-I)", "N/A","images/msd2.png"],
+                ["PS8210", "Micro SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3","images/msd3.png"],
+                ["PS8131", "Micro SD", "95/30 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U1", "images/msd8.png"],
+                ["PS8210", "Micro SD", "100/90 MB/s", "4GB~16GB", "2D MLC, 2D pSLC", "N/A", "V10(UHS-I)", "U3","images/msd2.png"],
+                ["PS8131", "Micro SD", "100/45 MB/s", "32GB~64GB", "3D TLC", "A1", "V30(UHS-I)", "U3", "images/msd8.png"],
+                ["PS8132", "Micro SD", "100/90 MB/s", "64GB~512GB", "3D TLC", "A2", "V30(UHS-I)", "U3", "images/msd9.png"],
+                ["PS8132", "Micro SD", "100/90 MB/s", "16GB~128GB", "3D pSLC", "A2", "V30(UHS-I)", "U3", "images/msd10.png"],
+                ["PS8229", "Micro SD", "170/90 MB/s", "128GB~1TB", "3D QLC", "A2", "V30(UHS-I)", "U3","images/msd11.png"]
+    ];
+    
+    
+    const tableBodySD = document.getElementById('tableBody');
+    const modalSD = document.getElementById('modelModal');
+    const modalInfoSD = document.getElementById('modelInfo');
+    const modalImageSD = document.getElementById('modelImage');
+    
+    const tableBodyMicroSD = document.getElementById('tableBody2');
+    const modalMicroSD = document.getElementById('modelModalMicroSD');
+    const modalInfoMicroSD = document.getElementById('modelInfoMicroSD');
+    const modalImageMicroSD = document.getElementById('modelImageMicroSD');
+
+    const closeModalSD = document.querySelectorAll('.close');
+
+    // Close modal when 'X' is clicked
+    closeModalSD.forEach(close => {
+        close.addEventListener('click', function() {
+            modalSD.style.display = 'none';
+            modalMicroSD.style.display = 'none';
+        });
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+        if (event.target === modalSD) {
+            modalSD.style.display = 'none';
+        }
+        if (event.target === modalMicroSD) {
+            modalMicroSD.style.display = 'none';
+        }
+    });
+
+    function createSelect(items, index) {
+        const uniqueValues = [...new Set(items.map(item => item[index]))];
+        if (uniqueValues.length === 1) {
+            return uniqueValues[0];
+        }
+        return `<select>${uniqueValues.map(value => `<option>${value}</option>`).join('')}</select>`;
+    }
+
+    function populateTable(arr, tableBody, modal, modalInfo, modalImage) {
+        arr.forEach(item => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td data-model="${item[0]}" data-controller="${item[0]}" data-interface="${item[1]}">${item[0]}</td>
+                <td>${item[1]}</td>
+                <td>${item[2]}</td>
+                <td>${item[3]}</td>
+                <td>${item[4]}</td>
+                <td>${item[5]}</td>
+                <td>${item[6]}</td>
+                <td>${item[7]}</td>
+            `;
+
+            // Add event listener to open modal when clicking the row
+            tr.children[0].addEventListener('click', function() {
+                modalInfo.innerHTML = `
+                    <p>Controller: ${item[0]}</p>
+                    <p>Form Factor: ${item[1]}</p>
+                    <p>Performance: ${item[2]}</p>
+                    <p>Capacity: ${item[3]}</p>
+                    <p>Flash: ${item[4]}</p>
+                    <p>Application Performance Class: ${item[5]}</p>
+                    <p>Video Speed Class: ${item[6]}</p>
+                    <p>UHS Speed: ${item[7]}</p>`;
+                modalImage.src = `${item[8]}`; // Image source
+                modal.style.display = 'block';
+            });
+
+            tableBody.appendChild(tr);
+        });
+    }
+
+    // Populate tables without grouping
+    populateTable(arrSD, tableBodySD, modalSD, modalInfoSD, modalImageSD);
+    populateTable(arrMicroSD, tableBodyMicroSD, modalMicroSD, modalInfoMicroSD, modalImageMicroSD);
+    </script>
+    
+  
    
    
 <br><br>

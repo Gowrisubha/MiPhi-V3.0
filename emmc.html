@@ -306,90 +306,203 @@
         </table>
     </section>
 </main>
-
+<!-- Modal structure -->
+<div id="modelModal" class="modal" style="display:none;">
+  <div class="modal-content">
+      <span class="close py-2">&times;</span>
+      <div class="modal-body">
+          <div class="modal-text">
+              <h2 id="modelTitle">eMMC</h2>
+              <p id="modelInfo">Information will appear here...</p>
+          </div>
+          <img id="modelImage" src="" alt="Model Image" class="modal-image">
+      </div>
+  </div>
+</div>
 <style>
-    select {
-        border: 1px solid #e4d9d0fe;  /* Set the border color to #fff5 */
-        border-radius: 4px; /* Optional: add some border radius */
-        padding: 0px; /* Optional: add some padding */
-        background-color: transparent; /* Optional: set background color */
-        color: #000; /* Optional: set text color */
-        /* Remove default dropdown arrow */
-        width: 100%; /* Make the select full width */
-        max-width: 150px; /* Optional: set a max width */
-        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  /* Modal styling */
+ /* Modal styling */
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 900px; /* Add max-width for larger screens */
+    position: relative;
+}
+@media (max-width:768px) {
+  
+  .modal-content {
+      background-color: white;
+      margin: 30% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 900px; /* Add max-width for larger screens */
+      position: relative;
+  }
+}
+/* Close button styling */
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 100;
+}
+
+.close:hover {
+    color: black;
+    cursor: pointer;
+}
+
+/* Flexbox layout for modal body */
+.modal-body {
+    display: flex;
+    flex-direction: column; /* Stack items vertically for smaller screens */
+    align-items: center;
+}
+
+/* For larger screens, align image and text horizontally */
+@media (min-width: 769px) {
+    .modal-body {
+        flex-direction: row; /* Align items in a row */
+        justify-content: space-between; /* Space between text and image */
+        align-items: flex-start; /* Align text and image at the top */
     }
+  
+}
+
+/* Modal text styling */
+.modal-text {
+    flex: 1;
+    padding-right: 20px; /* Add space between text and image */
+    margin-bottom: 20px; /* Space below the text for smaller screens */
+    text-align: left; /* Ensure text is aligned left */
+}
+
+/* Reduce padding for large screens */
+@media (min-width: 768px) {
+    .modal-text {
+        margin-bottom: 0; /* Remove bottom margin on larger screens */
+    }
+}
+
+/* Image styling */
+.modal-image {
+    width: 100%;
+    max-width: 300px;
+    margin: auto; /* Fixed width for image */
+    height: auto;
+    object-fit: contain;
+}
+
+/* Ensure image aligns better with text on larger screens */
+@media (min-width: 1024px) {
     
-    /* Optional: Add a custom arrow for the dropdown */
-    select::-ms-expand {
-        display: none; /* Hides default arrow for IE */
+    .modal-image {
+        max-width: 300px; /* Reduce image width on larger screens */
+    }
+}
+
+/* Adjust modal width and content padding for small screens */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 95%; /* Slightly smaller width on small screens */
+    }
+}
+
+    
+    /* Add hover effect for controller links */
+    .controller-link {
+        cursor: pointer; /* Change cursor to pointer */
+        
     }
 
-    /* Responsive styles */
-    @media (max-width: 600px) {
-        select {
-            max-width: 100%; /* Allow full width on smaller screens */
-        }
+    .controller-link:hover {
+         /* Change background to orange */
+        color: #FF7918; /* Change text color to white */
     }
 </style>
 
 <script>
-    const arr = [
-        ["PS8232", "eMMC 5.1", "32GB ~ 64GB", "3D TLC", "310/180 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A", "document.pdf", "ps8232.html"],
-        ["PS8231", "eMMC 5.1", "64GB ~ 512GB", "3D TLC", "320/280 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A", "document.pdf", "ps8231.html"],
-        ["PS8229", "eMMC 5.1", "32GB ~ 256GB", "3D TLC", "315/240 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A", "document.pdf", "ps8229.html"],
-        ["PS8228", "eMMC 5.1", "8GB", "2D MLC", "280/105 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A", "document.pdf", "ps8228.html"],
-        ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "100 Balls (14x18x1.4mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "ps8225.html"],
-        ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "100 Balls (14x18x1.4mm)", "- 40°C ~ 105°C", "AEC Grade 2", "document.pdf", "ps8225(1).html"],
-        ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "ps8225(2).html"],
-        ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "ps8225(3).html"],
-        ["PS8231", "eMMC 5.1", "32GB ~ 256GB", "3D TLC", "320/215 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "ps8231(1).html"],
-        ["PS8231", "eMMC 5.1", "32GB ~ 256GB", "3D TLC", "320/215 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 105°C", "AEC Grade 2", "document.pdf", "ps8231(2).html"],
-        ["PS8229", "eMMC 5.1", "16GB ~ 32GB", "3D TLC", "280/190 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "ps8229(1).html"],
-        ["PS8229", "eMMC 5.1", "16GB ~ 32GB", "3D TLC", "280/190 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "ps8229(2).html"]
-    ];
+  const arr = [
+      ["PS8232", "eMMC 5.1", "32GB ~ 64GB", "3D TLC", "310/180 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A", "document.pdf", "images/PS8232-eMMC-opt.png"],
+      ["PS8231", "eMMC 5.1", "64GB ~ 512GB", "3D TLC", "320/280 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A", "document.pdf", "images/PS8231-eMMC-opt.png"],
+      ["PS8229", "eMMC 5.1", "32GB ~ 256GB", "3D TLC", "315/240 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A", "document.pdf", "images/PS8229-eMMC-opt.png"],
+      ["PS8228", "eMMC 5.1", "8GB", "2D MLC", "280/105 MB/s", "153 Balls (11.5x13x1.0mm)", "- 25°C ~ 85°C (Tcase)", "N/A", "document.pdf", "images/PS8228-eMMC-opt.png"],
+      ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "100 Balls (14x18x1.4mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "images/MEM5-eMMC-ISO-opt.png"],
+      ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "100 Balls (14x18x1.4mm)", "- 40°C ~ 105°C", "AEC Grade 2", "document.pdf", "images/MEM5-eMMC-ISO-opt.png"],
+      ["PS8225", "eMMC 5.1", "4GB ~ 16GB", "MLC", "225/140 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "images/MEM5-eMMC-ISO-opt.png"],
+      ["PS8231", "eMMC 5.1", "32GB ~ 256GB", "3D TLC", "320/215 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "images/PS8231-eMMC-opt.png"],
+      ["PS8231", "eMMC 5.1", "32GB ~ 256GB", "3D TLC", "320/215 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 105°C", "AEC Grade 2", "document.pdf", "images/PS8231-eMMC-opt.png"],
+      ["PS8229", "eMMC 5.1", "16GB ~ 32GB", "3D TLC", "280/190 MB/s", "153 Balls (11.5x13x1.0mm)", "- 40°C ~ 85°C", "AEC Grade 3", "document.pdf", "images/PS8229-eMMC-opt.png"]
+  ];
 
-    const tableBody = document.getElementById('tableBody');
+  const tableBody = document.getElementById('tableBody');
+  const modal = document.getElementById('modelModal');
+  const modalTitle = document.getElementById('modelTitle');
+  const modalInfo = document.getElementById('modelInfo');
+  const modalImage = document.getElementById('modelImage');
+  const closeModal = document.querySelector('.close');
 
-    // Group by controller
-    const groupedData = arr.reduce((acc, item) => {
-        const controller = item[0];
-        if (!acc[controller]) {
-            acc[controller] = [];
-        }
-        acc[controller].push(item);
-        return acc;
-    }, {});
+  // Close modal when 'X' is clicked
+  closeModal.addEventListener('click', function() {
+      modal.style.display = 'none';
+  });
 
-    Object.keys(groupedData).forEach(controller => {
-        const items = groupedData[controller];
+  // Close modal when clicking outside of it
+  window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+          modal.style.display = 'none';
+      }
+  });
 
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${controller}</td>
-            <td>${createSelect(items, 1)}</td>
-            <td>${createSelect(items, 2)}</td>
-            <td>${createSelect(items, 3)}</td>
-            <td>${createSelect(items, 4)}</td>
-            <td>${createSelect(items, 5)}</td>
-            <td>${createSelect(items, 6)}</td>
-            <td>${createSelect(items, 7)}</td>
-        `;
+  // Create table rows without grouping by controller
+  arr.forEach(item => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+          <td class="controller-link">${item[0]}</td>
+          <td>${item[1]}</td>
+          <td>${item[2]}</td>
+          <td>${item[3]}</td>
+          <td>${item[4]}</td>
+          <td>${item[5]}</td>
+          <td>${item[6]}</td>
+          <td>${item[7]}</td>
+      `;
+      tableBody.appendChild(tr);
 
-        tableBody.appendChild(tr);
-    });
-
-    function createSelect(items, index) {
-        const uniqueValues = [...new Set(items.map(item => item[index]))];
-
-        if (uniqueValues.length === 1) {
-            return uniqueValues[0]; // Return the single value if no dropdown is needed
-        }
-
-        return `<select>
-            ${uniqueValues.map(value => `<option>${value}</option>`).join('')}
-        </select>`;
-    }
+      // Add event listener to controller cell for modal
+      tr.querySelector('.controller-link').addEventListener('click', function() {
+          modalInfo.innerHTML = `
+              <p>Controller: ${item[0]}</p>
+              <p>Interface: ${item[1]}</p>
+              <p>Capacity: ${item[2]}</p>
+              <p>NAND Flash: ${item[3]}</p>
+              <p>Sequential R/W Performance: ${item[4]}</p>
+              <p>Package Type/Size: ${item[5]}</p>
+              <p>Operating Temperature: ${item[6]}</p>
+              <p>Grade: ${item[7]}</p>
+          `;
+          modalImage.src = item[9]; // Use the corresponding image
+          modal.style.display = 'block';
+      });
+  });
 </script>
 
   
