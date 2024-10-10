@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/vendor.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -148,7 +148,7 @@
     <header id="header" class="site-header bg-white position-fixed z-2 w-100 border-bottom mb-5 main-header" data-text-color="white">
       <nav id="header-nav" class="navbar navbar-expand-lg py-2 " >
         <div class="container-lg" >
-          <a class="navbar-brand pb-4" href="index.html">
+          <a class="navbar-brand " href="index.html">
             <img src="images/miphi_main_logo.png" class="logo" height="80" width="170">
           </a>
           <button class="navbar-toggler d-flex d-lg-none order-3 p-2 border-0 shadow-none bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -162,28 +162,18 @@
             </div>
             <div class="offcanvas-body">
               <ul class="navbar-nav scrollspy-nav justify-content-end flex-grow-1 gap-lg-5 pe-3">
-                <!-- <li class="nav-item dropdown">
-                  <a class="nav-link text-dark active dropdown-toggle" href="#intro" id="dropdownHome" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home</a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownHome">
-                    <a class="dropdown-item" href="home-v1.html">Home V1</a>
-                    <a class="dropdown-item" href="home-v2.html">Home V2 <span class="badge bg-primary">PRO</span></a>
-                    <a class="dropdown-item" href="home-v3.html">Home V3 <span class="badge bg-primary">PRO</span></a>
-                    <a class="dropdown-item" href="home-v4.html">Home V4 <span class="badge bg-primary">PRO</span></a>
-                    <a class="dropdown-item" href="home-v5.html">Home V5 <span class="badge bg-primary">PRO</span></a>
-                    <a class="dropdown-item" href="home-v6.html">Home V6 <span class="badge bg-primary">PRO</span></a>
-                  </div>
-                </li> -->
+               
                 <li class="scrollspy-link nav-item">
-                  <a class="nav-link text-dark"  href="aidaptiv.html">aiDAPTIV+</a>
+                  <a class="nav-link text-dark"  href="pages/aidaptiv.html">aiDAPTIV+</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link text-dark active" href="enterprise.html" id="dropdownPages" onclick="redirectOnBigScreensEnterprise(event);" aria-haspopup="true" aria-expanded="false">Enterprise</a>
+                  <a class="nav-link text-dark active" href="pages/enterprise.html" id="dropdownPages" onclick="redirectOnBigScreensEnterprise(event);" aria-haspopup="true" aria-expanded="false">Enterprise</a>
                   <div class="dropdown-menu" aria-labelledby="dropdownPages">
-                    <a class="dropdown-item fw-bold" href="enterprise.html" style="color: black; font-size: small;">Overview<span class="badge bg-primary fw-bold"></span></a>
-                    <a class="dropdown-item" href="x-series.html" style="font-size: small;">Performance X-Series<span class="badge bg-primary"></span></a>
-                    <a class="dropdown-item" href="d-series.html" style="font-size: small;">Data Center D-Series<span class="badge bg-primary"></span></a>
-                    <a class="dropdown-item" href="b-series.html" style="font-size: small;">Boot Drive B-Series<span class="badge bg-primary"></span></a>
-                    <a class="dropdown-item" href="s-series.html" style="font-size: small;">SATA S-Series<span class="badge bg-primary"></span></a>
+                    <a class="dropdown-item fw-bold" href="pages/enterprise.html" style="color: black; font-size: small;">Overview<span class="badge bg-primary fw-bold"></span></a>
+                    <a class="dropdown-item" href="pages/x-series.html" style="font-size: small;">Performance X-Series<span class="badge bg-primary"></span></a>
+                    <a class="dropdown-item" href="pages/d-series.html" style="font-size: small;">Data Center D-Series<span class="badge bg-primary"></span></a>
+                    <a class="dropdown-item" href="pages/b-series.html" style="font-size: small;">Boot Drive B-Series<span class="badge bg-primary"></span></a>
+                    <a class="dropdown-item" href="pages/s-series.html" style="font-size: small;">SATA S-Series<span class="badge bg-primary"></span></a>
                   </div>
                 </li>
                 
@@ -212,33 +202,33 @@
                     <div class="row">
                       <div class="col-md-3" style="font-size: small;">
                         <p id="overview-link" style="font-size: small;">
-                          <a style="color: black" href="product.html">Overview</a>
+                          <a style="color: black" href="pages/product.html">Overview</a>
                         </p>
                         <h6 style="color: black; font-size: small;" >Consumer</h6>
                         <ul class="list-unstyled">
-                          <li><a href="consumer.html">Consumer SSD</a></li>
+                          <li><a href="pages/consumer.html">Consumer SSD</a></li>
                         </ul>
                       </div>
                       <div class="col-md-3" style="font-size: small;">
                         <h6 style="color: black;font-size: small;">Embedded</h6>
                         <ul class="list-unstyled">
-                          <li><a href="emmc.html">eMMC</a></li>
-                          <li><a href="ufs.html">UFS</a></li>
-                          <li><a href="bga.html">BGA SSD</a></li>
+                          <li><a href="pages/emmc.html">eMMC</a></li>
+                          <li><a href="pages/ufs.html">UFS</a></li>
+                          <li><a href="pages/bga.html">BGA SSD</a></li>
                         </ul>
                       </div>
                       <div class="col-md-3" style="font-size: small;">
                         <h6 style="color: black; font-size: small;">Removable Storage</h6>
                         <ul class="list-unstyled">
-                          <li><a href="usb.html">USB</a></li>
-                          <li><a href="memory.html">Memory Card</a></li>
-                          <li><a href="external_ssd.html">External SSD</a></li>
+                          <li><a href="pages/usb.html">USB</a></li>
+                          <li><a href="pages/memory.html">Memory Card</a></li>
+                          <li><a href="pages/external_ssd.html">External SSD</a></li>
                         </ul>
                       </div>
                       <div class="col-md-3" style="font-size: small;">
                         <h6 style="color: black; font-size: small;">Gaming</h6>
                         <ul class="list-unstyled">
-                          <li><a href="gaming.html">Gaming SSD</a></li>
+                          <li><a href="pages/gaming.html">Gaming SSD</a></li>
                         </ul>
                       </div>
                     </div>
@@ -247,7 +237,7 @@
 
 
                 <li class="scrollspy-link nav-item">
-                  <a class="nav-link text-dark"  href="application.html">Applications</a>
+                  <a class="nav-link text-dark"  href="pages/application.html">Applications</a>
                 </li>
                 
                 <!-- <li class="nav-item dropdown">
@@ -260,9 +250,9 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link text-dark active " href="#" id="dropdownPages" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"onclick="redirectOnBigScreensAbout(event);">About</a>
                   <div class="dropdown-menu" aria-labelledby="dropdownPages">
-                    <a class="dropdown-item fw-bold" href="about.html" style="color: black; font-size: small;">Overview<span class="badge bg-primary"></span></a>
-                    <a class="dropdown-item" href="factory.html" style="font-size: small;">Manufacturing<span class="badge bg-primary"></span></a>
-                    <a class="dropdown-item" href="partners.html" style="font-size: small;">Customer & Partners <span class="badge bg-primary"></span></a>
+                    <a class="dropdown-item fw-bold" href="pages/about.html" style="color: black; font-size: small;">Overview<span class="badge bg-primary"></span></a>
+                    <a class="dropdown-item" href="pages/factory.html" style="font-size: small;">Manufacturing<span class="badge bg-primary"></span></a>
+                    <a class="dropdown-item" href="pages/partners.html" style="font-size: small;">Customer & Partners <span class="badge bg-primary"></span></a>
                     <!-- <a class="dropdown-item" href="blog.html" style="font-size: small;">Blogs <span class="badge bg-primary"></span></a>
                     <a class="dropdown-item" href="whitepaper.html" style="font-size: small;">Whitepapers<span class="badge bg-primary"></span></a> -->
                     <!-- <a class="dropdown-item" href="faqs.html">FAQs <span class="badge bg-primary"></span></a> -->
@@ -278,8 +268,8 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link text-dark active " href="#" id="dropdownPages" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Support</a>
                   <div class="dropdown-menu" aria-labelledby="dropdownPages">
-                    <a class="dropdown-item" href="contact.html" style="font-size: small;">Contact<span class="badge bg-primary"></span></a>
-                    <a class="dropdown-item" href="faqs.html" style="font-size: small;">FAQs<span class="badge bg-primary"></span></a>
+                    <a class="dropdown-item" href="pages/contact.html" style="font-size: small;">Contact<span class="badge bg-primary"></span></a>
+                    <a class="dropdown-item" href="pages/faqs.html" style="font-size: small;">FAQs<span class="badge bg-primary"></span></a>
                     <!-- <a class="dropdown-item" href="faqs.html">FAQs <span class="badge bg-primary"></span></a> -->
                   </div>
                 </li>
@@ -293,16 +283,16 @@
         </div>
       </nav>
     </header>
-<br><br><br>
+<br><br>
 
 
-<div class="slideshow-container pt-5" style="position: relative;">
+<div class="slideshow-container mt-3" style="position: relative;">
 
   <!-- Full-width images with number and caption text -->
   <div class="mySlides jade" style="background-color: black;">
-    <div class="numbertext">1 / 4</div>
+    
     <video id="background-video" playsinline autoplay muted loop style="width: 60%; height: 60%; padding: 7%; ">
-      <source src="images/cuboid.mp4" type="video/mp4">
+      <source src="videos/cuboid.mp4" type="video/mp4">
     </video>
     <div class="text">Caption Text</div>
     <!-- Left content -->
@@ -314,7 +304,7 @@
   </div>
 
   <div class="mySlides jade">
-    <div class="numbertext">2 / 4</div>
+   
     <img src="images/home-car-bg1.svg" alt="AI PC" style="width:100%">
     <div class="text">Caption Two</div>
     <!-- Left content -->
@@ -326,7 +316,7 @@
   </div>
 
   <div class="mySlides jade">
-    <div class="numbertext">3 / 4</div>
+    
     <img src="images/home-car-bg2.svg" alt="AI Server" style="width:100%">
     <div class="text">Caption Three</div>
     <!-- Left content -->
@@ -338,9 +328,9 @@
   </div>
 
   <div class="mySlides jade">
-    <div class="numbertext">4 / 4</div>
+   
     <video playsinline autoplay muted loop style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
-      <source src="video2.mp4" type="video/mp4">
+      <source src="videos/video2.mp4" type="video/mp4">
     </video>
     <div class="text" style="position: relative; z-index: 1; padding-top: 38%;">Caption Four</div>
     <!-- Left content -->
@@ -351,8 +341,8 @@
   </div>
 
   <div class="mySlides jade">
-    <div class="numbertext">5 / 4</div>
-    <img src="images/home-car-bg3.svg" alt="Enterprise SSD" style="width:100%">
+    
+    <img src="images/home-car-bg3.png" alt="Enterprise SSD" style="width:100%">
     <div class="text">Caption Three</div>
     <!-- Left content -->
     <div class="left-content" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); padding: 5%; width: 50%;">
@@ -363,8 +353,8 @@
   </div>
 
   <div class="mySlides jade">
-    <div class="numbertext">6/ 4</div>
-    <img src="images/home-car-bg4.svg" alt="Consumer-SSD" style="width:100%">
+   
+    <img src="images/home-car-bg4.png" alt="Consumer-SSD" style="width:100%">
     <div class="text">Caption Three</div>
     <!-- Left content -->
     <div class="left-content" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); padding: 5%; width: 50%;">
@@ -375,8 +365,8 @@
       </div>
   </div>
   <div class="mySlides jade">
-    <div class="numbertext">7/ 4</div>
-    <img src="images/home-car-bg5.svg" alt="eMMC" style="width:100%">
+   
+    <img src="images/home-car-bg5.png" alt="eMMC" style="width:100%">
     <div class="text">Caption Three</div>
     <!-- Left content -->
     <div class="left-content" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); padding: 5%; width: 50%;">
@@ -389,8 +379,8 @@
   </div>
 
   <div class="mySlides jade">
-    <div class="numbertext">8 / 4</div>
-    <img src="images/home-car-bg6.svg" alt="UFS" style="width:100%">
+   
+    <img src="images/home-car-bg6.png" alt="UFS" style="width:100%">
     <div class="text">Caption Three</div>
     <!-- Left content -->
     <div class="left-content" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); padding: 5%; width: 50%;">
@@ -402,21 +392,21 @@
   </div>
 
   <div class="mySlides jade">
-    <div class="numbertext">9 / 4</div>
-    <img src="images/home-car-bg7.svg" alt="BGA_SSD" style="width:100%">
+
+    <img src="images/home-car-bg7.png" alt="BGA_SSD" style="width:100%">
     <div class="text">Caption Three</div>
     <!-- Left content -->
     <div class="left-content" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); padding: 5%; width: 50%;">
       
       <h3 class="text-light">BGA SSD</h2>
-        <h4 class="lead my-4 text-light" data-aos="fade-up" data-aos-delay="400">The Phison MPT560 (PS5021-E21TI) 1620 BGA SSD offers PCIe Gen 4x4 speeds with capacities from 64GB to 1024GB, reaching up to 3650 MB/s read and 2900 MB/s write. It delivers high performance with lower power consumption, making it ideal for embedded platforms.</h4>
+        <h4 class="lead my-4 text-light" data-aos="fade-up" data-aos-delay="400">The Phison MPT560 (PS5021-E21TI) 1620 BGA SSD offers PCIe Gen 4x4 speeds with capacities from 64GB to 1024GB, reaching up to 3650 MB/s read and 2900 MB/s write.</h4>
       <a href="ufs.html" class="btn btn-lg btn-primary rounded-pill text-uppercase" >Learn More</a>
       </div>
   </div>
 
   <div class="mySlides jade">
-    <div class="numbertext">10 / 4</div>
-    <img src="images/home-car-bg8.svg" alt="USB" style="width:100%">
+   
+    <img src="images/home-car-bg8.png" alt="USB" style="width:100%">
     <div class="text">Caption Three</div>
     <!-- Left content -->
     <div class="left-content" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); padding: 5%; width: 50%;">
@@ -428,8 +418,8 @@
   </div>
 
   <div class="mySlides jade">
-    <div class="numbertext">11 / 4</div>
-    <img src="images/home-car-bg9.svg" alt="Memory Card" style="width:100%">
+    
+    <img src="images/home-car-bg9.png" alt="Memory Card" style="width:100%">
     <div class="text">Caption Three</div>
     <!-- Left content -->
     <div class="left-content" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); padding: 5%; width: 50%;">
@@ -440,8 +430,8 @@
       </div>
   </div>
   <div class="mySlides jade">
-    <div class="numbertext">12/ 4</div>
-    <img src="images/home-car-bg10.svg" alt="External-SSD" style="width:100%">
+   
+    <img src="images/home-car-bg10.png" alt="External-SSD" style="width:100%">
     <div class="text">Caption Three</div>
     <!-- Left content -->
     <div class="left-content" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); padding: 5%; width: 50%;">
@@ -452,14 +442,14 @@
       </div>
   </div>
   <div class="mySlides jade">
-    <div class="numbertext">13/ 4</div>
-    <img src="images/home-car-bg11.svg" alt="Gaming-SSD" style="width:100%">
+   
+    <img src="images/home-car-bg11.png" alt="Gaming-SSD" style="width:100%">
     <div class="text">Caption Three</div>
     <!-- Left content -->
     <div class="left-content" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); padding: 5%; width: 50%;">
       
       <h3 class="text-light">Gaming SSD</h2>
-        <h4 class="lead my-4 text-light" data-aos="fade-up" data-aos-delay="400">Experience ultra-fast load times and seamless gameplay with our high-performance SSD, designed for gamers seeking peak efficiency. Upgrade your system for faster speeds, reduced delays, and uninterrupted gaming action.</h4>
+        <h4 class="lead my-4 text-light" data-aos="fade-up" data-aos-delay="400">Experience ultra-fast load times and seamless gameplay with our high-performance SSD, designed for gamers seeking peak efficiency. </h4>
       <a href="gaming.html" class="btn btn-lg btn-primary rounded-pill text-uppercase" >Learn More</a>
       </div>
   </div>
@@ -492,7 +482,7 @@
      <!-- slide 1 -->
      <div class="home-slide swiper-slide" style="position: relative; overflow: hidden;">
       <video id="background-video" playsinline autoplay muted loop class="img-fluid jarallax-img video-back" style="width: 100%; height: 100%; object-fit: cover;">
-        <source src="images/main-vdo-small.mp4" type="video/mp4">
+        <source src="videos/main-vdo-small.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
      
@@ -513,7 +503,7 @@
        
           <!-- Slide 2 -->
       <div class="home-slide swiper-slide">
-      <img src="images/home-car-bg1-small.svg" class="home-image home-car-bg1 " alt="AI PC">
+      <img src="images/home-car-bg1-small.png" class="home-image home-car-bg1 " alt="AI PC">
       <div class="home-image-data">
       <div class="container-lg">
       <div class="row align-items-center">
@@ -530,7 +520,7 @@
        
           <!-- Slide 3 -->
       <div class="home-slide swiper-slide">
-      <img src="images/home-car-bg2-small.svg" class="home-image home-car-bg2" alt="AI Server"  >
+      <img src="images/home-car-bg2-small.png" class="home-image home-car-bg2" alt="AI Server"  >
       <div class="home-image-data">
       <div class="container-lg">
       <div class="row align-items-center">
@@ -551,7 +541,7 @@
       <div class="home-slide swiper-slide" style="position: relative; overflow: hidden;">
         <!-- Video Background -->
         <video playsinline autoplay muted loop class="img-fluid jarallax-img video-back" style="width: 100%; height: 100%; object-fit: cover;">
-          <source src="video2.mp4" type="video/mp4">
+          <source src="videos/video2.mp4" type="video/mp4">
         </video>
       
         <!-- Content over the video -->
@@ -569,7 +559,7 @@
 
    <!-- slide 5 -->
       <div class="home-slide swiper-slide">
-        <img src="images/home-car-bg3-small.svg" class="home-image home-car-bg2" alt="Enterprise-SSD"  >
+        <img src="images/home-car-bg3-small.png" class="home-image home-car-bg2" alt="Enterprise-SSD"  >
         <div class="home-image-data">
         <div class="container-lg">
         <div class="row align-items-center">
@@ -586,7 +576,7 @@
 
         <!-- slide 6 -->
         <div class="home-slide swiper-slide">
-          <img src="images/home-car-bg4-small.svg" class="home-image home-car-bg2" alt="Consumer-SSD"  >
+          <img src="images/home-car-bg4-small.png" class="home-image home-car-bg2" alt="Consumer-SSD"  >
           <div class="home-image-data">
           <div class="container-lg">
           <div class="row align-items-center">
@@ -603,7 +593,7 @@
 
             <!-- slide 7 -->
           <div class="home-slide swiper-slide">
-            <img src="images/home-car-bg5-small.svg" class="home-image home-car-bg2" alt="eMMC"  >
+            <img src="images/home-car-bg5-small.png" class="home-image home-car-bg2" alt="eMMC"  >
             <div class="home-image-data">
             <div class="container-lg">
             <div class="row align-items-center">
@@ -620,7 +610,7 @@
             </div>
             <!-- slide 8 -->
             <div class="home-slide swiper-slide">
-              <img src="images/home-car-bg6-small.svg" class="home-image home-car-bg2" alt="UFS"  >
+              <img src="images/home-car-bg6-small.png" class="home-image home-car-bg2" alt="UFS"  >
               <div class="home-image-data">
               <div class="container-lg">
               <div class="row align-items-center">
@@ -636,7 +626,7 @@
               </div>
              <!-- slide 9 -->
               <div class="home-slide swiper-slide">
-                <img src="images/home-car-bg7-small.svg" class="home-image home-car-bg2" alt="BGA_SSD"  >
+                <img src="images/home-car-bg7-small.png" class="home-image home-car-bg2" alt="BGA_SSD"  >
                 <div class="home-image-data">
                 <div class="container-lg">
                 <div class="row align-items-center">
@@ -652,7 +642,7 @@
                 </div>
             <!-- slide 10 -->
                 <div class="home-slide swiper-slide">
-                  <img src="images/home-car-bg8-small.svg" class="home-image home-car-bg2" alt="USB"  >
+                  <img src="images/home-car-bg8-small.png" class="home-image home-car-bg2" alt="USB"  >
                   <div class="home-image-data">
                   <div class="container-lg">
                   <div class="row align-items-center">
@@ -668,7 +658,7 @@
                   </div>
                <!-- slide 11 -->
                   <div class="home-slide swiper-slide">
-                    <img src="images/home-car-bg9-small.svg" class="home-image home-car-bg2" alt="Memory Card"  >
+                    <img src="images/home-car-bg9-small.png" class="home-image home-car-bg2" alt="Memory Card"  >
                     <div class="home-image-data">
                     <div class="container-lg">
                     <div class="row align-items-center">
@@ -684,7 +674,7 @@
                     </div>
                 <!-- slide 12 -->
                     <div class="home-slide swiper-slide">
-                      <img src="images/home-car-bg10-small.svg" class="home-image home-car-bg2" alt="External-SSD"  >
+                      <img src="images/home-car-bg10-small.png" class="home-image home-car-bg2" alt="External-SSD"  >
                       <div class="home-image-data">
                       <div class="container-lg">
                       <div class="row align-items-center">
@@ -700,13 +690,13 @@
                       </div>
                      <!-- slide 13 -->
                       <div class="home-slide swiper-slide">
-                        <img src="images/home-car-bg11-small.svg" class="home-image home-car-bg2" alt="Gaming-SSD"  >
+                        <img src="images/home-car-bg11-small.png" class="home-image home-car-bg2" alt="Gaming-SSD"  >
                         <div class="home-image-data">
                         <div class="container-lg">
                         <div class="row align-items-center">
                         <div class="col-lg-6 col-md-12 col-sm-12 content-box">
                           <h2 class="text-light">Gaming SSD</h2>
-                            <h4 class="lead my-4 text-light" data-aos="fade-up" data-aos-delay="400">Experience ultra-fast load times and seamless gameplay with our high-performance SSD, designed for gamers seeking peak efficiency. Upgrade your system for faster speeds, reduced delays, and uninterrupted gaming action.</h4>
+                            <h4 class="lead my-4 text-light" data-aos="fade-up" data-aos-delay="400">Experience ultra-fast load times and seamless gameplay with our high-performance SSD, designed for gamers seeking peak efficiency.</h4>
                           <a href="gaming.html" class="btn btn-lg btn-primary rounded-pill text-uppercase" style="width: max-content;">Learn More</a>
                            </div>
                         
@@ -1179,7 +1169,7 @@
             <div class="header">
               <div class="logo">
                
-                <span><a href="index.html"><img class="logo24" src="images/Logo (black)1.png"></a></span>
+                <span><a href="index.html"><img class="logo24" src="../images/Logo (black)1.png" alt="MiPhi"></a></span>
               </div>
      
               <div class="icons">
@@ -1187,12 +1177,13 @@
                 <a href="
                 https://www.linkedin.com/company/miphisemicon"
                 ><i class="fab fa-linkedin-in linkedin-bg"></i></a>
+                    
                 <a href="https://www.facebook.com/profile.php?id=61566597149713" class="fab facebook-bg">
                   <i class="fab fa-facebook-f"></i>
-              </a> 
-                                  <a href="https://x.com/MiPhiSc"> <img src="./images/twitter-logo.png" alt="Twitter" style="background-color: white;padding: 20%;width: 38px;height: 38px;border-radius: 25%; " ></a>
+              </a>   
+                                  <a href="https://x.com/MiPhiSc"> <img src="../images/twitter-logo.png" alt="Twitter" style="background-color: white;padding: 20%;width: 38px;height: 38px;border-radius: 25%; " ></a>
                                  
-                                 
+                                          
                              
               </div>
             </div>
@@ -1200,37 +1191,37 @@
             <div class="links">
               <ul class="col">
                 <li class="title">Products</li>
-                <li><a href="consumer.html">Consumer SSD</a></li>
-                <li><a href="emmc.html">eMMC</a></li>
-                <li><a href="ufs.html">UFS</a></li>
-                <li><a href="bga.html">BGA SSD</a></li>
-                <li><a href="usb.html">USB</a></li>
-                <li><a href="memory.html">Memory Card</a></li>
-                <li><a href="external_ssd.html">External SSD</a></li>
-                <li><a href="gaming.html">Gaming SSD</a></li>
+                <li><a href="pages/consumer.html">Consumer SSD</a></li>
+                <li><a href="pages/emmc.html">eMMC</a></li>
+                <li><a href="pages/ufs.html">UFS</a></li>
+                <li><a href="pages/bga.html">BGA SSD</a></li>
+                <li><a href="pages/usb.html">USB</a></li>
+                <li><a href="pages/memory.html">Memory Card</a></li>
+                <li><a href="pages/external_ssd.html">External SSD</a></li>
+                <li><a href="pages/gaming.html">Gaming SSD</a></li>
               </ul>
               <ul class="col">
                 <li class="title">Enterprise</li>
-                <li><a href="aidaptiv.html">aiDAPTIV+</a></li>
-                <li><a href="x-series.html">Performance X-Series</a></li>
-                <li><a href="d-series.html">Data Center D-Series</a></li>
-                <li><a href="b-series.html">Boot Drive B-Series</a></li>
-                <li><a href="s-series.html">Sata S-Series</a></li>
+                <li><a href="pages/aidaptiv.html">aiDAPTIV+</a></li>
+                <li><a href="pages/x-series.html">Performance X-Series</a></li>
+                <li><a href="pages/d-series.html">Data Center D-Series</a></li>
+                <li><a href="pages/b-series.html">Boot Drive B-Series</a></li>
+                <li><a href="pages/s-series.html">Sata S-Series</a></li>
               </ul>
               <ul class="col">
                 <li class="title">Company</li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="application.html">Applications</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="factory.html">Manufacturing</a></li>
-                <li><a href="partners.html">Customer and Partners</a></li>
-                <li><a href="faqs.html">FAQs</a></li>  
+                <li><a href="page/about.html">About</a></li>
+                <li><a href="pages/application.html">Applications</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+                <li><a href="pages/factory.html">Manufacturing</a></li>
+                <li><a href="pages/partners.html">Customer and Partners</a></li>
+                <li><a href="pages/faqs.html">FAQs</a></li>  
               </ul>
               <ul class="col">
                 <li class="title">Resources</li>
                 <!-- <li><a href="blog.html">Blogs</a></li>
                 <li><a href="whitepaper.html">Whitepapers</a></li> -->
-                <li><a href="risk.html">Risk Management</a></li>
+                <li><a href="pages/risk.html">Risk Management</a></li>
               </ul>
               <ul class="col">
                 <li class="title">Inquire</li>
@@ -1245,7 +1236,7 @@
                 >Copyright &#169;2024 <a href="index.html">MiPhi Semicon India Pvt. Ltd.</a>All rights reserved</span
               >
               <span class="terms">
-                <a href="terms.html">Terms & Conditions</a>
+                <a href="pages/terms.html">Terms & Conditions</a>
                
               </span>
             </div>
@@ -1353,7 +1344,7 @@
 <script>
   function updateVideoSource() {
     const videoElement = document.getElementById('background-video');
-    const newSource = window.innerWidth < 769 ? 'images/main-vdo-small.mp4' : 'images/cuboid.mp4';
+    const newSource = window.innerWidth < 769 ? 'videos/main-vdo-small.mp4' : 'videos/cuboid.mp4';
     
     // Update the video source and load it
     videoElement.src = newSource;

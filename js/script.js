@@ -325,7 +325,7 @@ function redirectOnBigScreensAbout(event) {
   // Check if the screen width is 1024px or greater
   if (window.innerWidth > 1024) {
     // Proceed with the navigation to enterprise.html
-    window.location.href = 'about.html';
+    window.location.href = 'pages/about.html';
   } else {
     // Stop propagation to prevent navigation on small screens
     event.stopPropagation();
@@ -339,7 +339,7 @@ function redirectOnBigScreensEnterprise(event) {
   // Check if the screen width is greater than or equal to 1024px
   if (screenWidth >1024) {
     // Allow redirect for large screens
-    window.location.href = 'enterprise.html';
+    window.location.href = 'pages/enterprise.html';
   } else {
     // Prevent redirect for smaller screens
     event.preventDefault();
@@ -349,7 +349,7 @@ function redirectOnBigScreens(event) {
   // Check if the screen width is 1024px or greater
   if (window.innerWidth > 1024) {
     // Proceed with the navigation to enterprise.html
-    window.location.href = 'product.html';
+    window.location.href = 'pages/product.html';
   } else {
     // Stop propagation to prevent navigation on small screens
     event.stopPropagation();
